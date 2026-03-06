@@ -98,7 +98,7 @@ async function main() {
     const response = await notion.databases.query({
         database_id: DB_ID,
         filter: { property: 'published', checkbox: { equals: true } },
-        sorts: [{ property: 'date', direction: 'descending' }]
+        sorts: [{ property: 'Date', direction: 'descending' }]
     });
 
     const posts = [];
