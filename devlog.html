@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZombieByte | Home</title>
+    <link rel="icon" href="placeholder_zombiebyte_favicon_skull.ico">
+    <style>
+        /* === ALL YOUR CSS STAYS HERE (shared) === */
+        /* Or move to a shared style.css and use <link rel="stylesheet" href="style.css"> */
+        /* Devlog page controls */
+#devlog-controls { display: flex; flex-wrap: wrap; gap: 10px; align-items: flex-start; margin-bottom: 16px; }
+#devlog-search { font-family: 'VT323', monospace; font-size: 18px; background: #0c0020; border: 2px solid #8a2be2; color: #e0d0ff; padding: 6px 10px; width: 100%; max-width: 320px; outline: none; }
+#devlog-search:focus { border-color: #cc44ff; box-shadow: 0 0 8px #8a2be2; }
+#devlog-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.tag-filter-btn { font-family: 'Press Start 2P', monospace; font-size: 6px; background: #0f0025; border: 1px solid #3a0060; color: #664488; padding: 4px 8px; cursor: pointer; }
+.tag-filter-btn:hover, .tag-filter-btn.active { background: #8a2be2; color: #fff; border-color: #cc44ff; }
+.post-tags { display: flex; flex-wrap: wrap; gap: 5px; margin: 6px 0; }
+.post-tag { font-family: 'Press Start 2P', monospace; font-size: 6px; background: #1a003a; border: 1px solid #3a0060; color: #664488; padding: 3px 6px; cursor: pointer; }
+.post-tag:hover { color: #cc44ff; border-color: #8a2be2; }
+
+/* Pagination */
+#devlog-pagination { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 16px; }
+.page-btn { font-family: 'Press Start 2P', monospace; font-size: 7px; background: #0f0025; border: 1px solid #3a0060; color: #8a2be2; padding: 5px 10px; cursor: pointer; }
+.page-btn:hover, .page-btn.active { background: #8a2be2; color: #fff; border-color: #cc44ff; }
+
+        
+    </style>
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<span id="top"></span>
+<input type="checkbox" id="nav-toggle">
+<label for="nav-toggle" id="nav-overlay"></label>
+
+<div id="wrapper">
+
+    <div id="header-placeholder"></div>
+
+    <!-- MAIN LAYOUT -->
+    <div id="main-layout">
+        <div id="sidebar-placeholder"></div>
+
+        <!-- ✏️ ONLY THIS CHANGES PER PAGE -->
+        <main id="content">
+ <h2 class="section-heading" data-i18n="section_devlog_page">All Devlog Posts</h2>
+
+    <!-- Filters / search bar -->
+    <div id="devlog-controls">
+        <input type="text" id="devlog-search" placeholder="&#128269; Search posts..." autocomplete="off">
+        <div id="devlog-tags"></div>
+    </div>
+
+    <div id="devlog-posts-container">
+        <p class="loading-msg" data-i18n="loading">&#9760; Loading...</p>
+    </div>
+
+    <!-- Pagination -->
+    <div id="devlog-pagination"></div>
+
+
+        </main>
+        <!-- END CONTENT -->
+
+    </div><!-- /#main-layout -->
+
+    <div id="footer-placeholder"></div>
+
+</div><!-- /#wrapper -->
+
+<a href="#top" id="back-to-top" title="Back to top">&#9650;</a>
+
+<!-- Component Loader -->
+<script>
+function loadComponent(id, file, callback) {
+    fetch(file)
+        .then(r => r.text())
+        .then(html => {
+            document.getElementById(id).innerHTML = html;
+            if (callback) callback();
+        });
+}
+
+// Load all shared components, then initialize i18n
+loadComponent('header-placeholder',  'components/header.html');
+loadComponent('sidebar-placeholder', 'components/sidebar.html');
+loadComponent('footer-placeholder',  'components/footer.html', function() {
+    // i18n runs AFTER all components are loaded
+    initI18n();
+});
+</script>
+
+<!-- Your i18n script (wrap it in a function called initI18n) -->
+<script>
+function initI18n() {
+    // === YOUR EXISTING i18n CODE HERE ===
+    // Just wrap the self-executing function body inside initI18n()
+     var T = {
+        en: {
+            subtitle:       "&#9733; Retro Horror Games from the Crypt &#9733;",
+            marquee:        "&#9760; NEW GAME IN DEVELOPMENT &mdash; STAY TUNED &#9760; &nbsp;&nbsp;&nbsp; 🎮 INSPIRED BY N64 &middot; PS1 &middot; PS2 &middot; GAMECUBE &middot; GAME BOY 🎮 &nbsp;&nbsp;&nbsp; &#9760; CHECK OUT THE LATEST DEVLOG BELOW &#9760; &nbsp;&nbsp;&nbsp; 💀 JOIN THE DISCORD &mdash; LINK IN SIDEBAR 💀 &nbsp;&nbsp;&nbsp; 🕹 MADE WITH GODOT ENGINE 🕹 &nbsp;&nbsp;&nbsp;",
+            nav_home:       "🏠 Home",
+            nav_devlog:     "📝 Devlog",
+            nav_games:      "🎮 Games",
+            nav_videos:     "📺 Videos",
+            nav_about:      "💀 About",
+            nav_links:      "🔗 Links",
+            nav_merch:      "👕 Merch",
+            section_devlog: "Latest Devlog",
+            new_tag:        "NEW",
+            read_more:      "READ MORE &raquo;",
+            view_all_posts: "VIEW ALL POSTS &raquo;",
+            section_games:  "My Games",
+            view_all_games: "VIEW ALL GAMES &raquo;",
+            section_videos: "Latest Videos",
+            yt_label:       "&#9654; LATEST YOUTUBE",
+            tt_label:       "&#9834; LATEST TIKTOK",
+            view_all_videos:"VIEW ALL VIDEOS &raquo;",
+            section_merch:  "Merch",
+            soon_tag:       "SOON",
+            merch_soon:     "&#9760; MERCH COMING SOON &#9760;",
+            merch_sub:      "T-shirts &middot; Stickers &middot; Prints",
+            sidebar_status: "👾 Dev Status",
+            working_on:     "Working on:",
+            mood_label:     "Mood:",
+            mood_val:       "☕ Caffeinated",
+            progress_label: "Progress:",
+            progress_val:   "Boss Fight AI",
+            sidebar_find:   "🔗 Find Me",
+            sidebar_pages:  "📂 Pages",
+            page_devlog:    "Devlog",
+            page_games:     "All Games",
+            page_videos:    "Videos",
+            page_about:     "About Me",
+            page_links:     "Links",
+            page_merch:     "Merch (soon)",
+            sidebar_souls:  "💀 Souls Devoured",
+            sidebar_now:    "🎵 Now Playing",
+            sidebar_btn:    "🤝 My Button",
+            sidebar_badge_text: "Free to use &amp; link!",
+            loading: "&#9760; Loading...",
+            loading: "&#9760; Cargando...",
+            footer1: "&#9760; ZombieByte &copy; 2026 &mdash; Made with &#10084; and <a href='https://godotengine.org' target='_blank'>Godot Engine</a> &#9760;",
+            footer2: "Hosted on <a href='https://neocities.org' target='_blank'>NeoCities</a> &nbsp;&middot;&nbsp; Best viewed at 1024&times;768"
+        },
+        es: {
+            subtitle:       "&#9733; Juegos de Terror Retro desde la Cripta &#9733;",
+            marquee:        "&#9760; NUEVO JUEGO EN DESARROLLO &mdash; MANTENTE AL TANTO &#9760; &nbsp;&nbsp;&nbsp; 🎮 INSPIRADO EN N64 &middot; PS1 &middot; PS2 &middot; GAMECUBE &middot; GAME BOY 🎮 &nbsp;&nbsp;&nbsp; &#9760; VE EL &Uacute;LTIMO DEVLOG ABAJO &#9760; &nbsp;&nbsp;&nbsp; 💀 &Uacute;NETE AL DISCORD &mdash; LINK EN EL SIDEBAR 💀 &nbsp;&nbsp;&nbsp; 🕹 HECHO CON GODOT ENGINE 🕹 &nbsp;&nbsp;&nbsp;",
+            nav_home:       "🏠 Inicio",
+            nav_devlog:     "📝 Devlog",
+            nav_games:      "🎮 Juegos",
+            nav_videos:     "📺 Videos",
+            nav_about:      "💀 Acerca",
+            nav_links:      "🔗 Links",
+            nav_merch:      "👕 Merch",
+            section_devlog: "&Uacute;ltimo Devlog",
+            new_tag:        "NUEVO",
+            read_more:      "LEER M&Aacute;S &raquo;",
+            view_all_posts: "VER TODAS LAS ENTRADAS &raquo;",
+            section_games:  "Mis Juegos",
+            view_all_games: "VER TODOS LOS JUEGOS &raquo;",
+            section_videos: "&Uacute;ltimos Videos",
+            yt_label:       "&#9654; &Uacute;LTIMO YOUTUBE",
+            tt_label:       "&#9834; &Uacute;LTIMO TIKTOK",
+            view_all_videos:"VER TODOS LOS VIDEOS &raquo;",
+            section_merch:  "Merch",
+            soon_tag:       "PRONTO",
+            merch_soon:     "&#9760; MERCH PR&Oacute;XIMAMENTE &#9760;",
+            merch_sub:      "Camisetas &middot; Calcoman&iacute;as &middot; Impresiones",
+            sidebar_status: "👾 Estado Dev",
+            working_on:     "Trabajando en:",
+            mood_label:     "Humor:",
+            mood_val:       "☕ Con cafe&iacute;na",
+            progress_label: "Progreso:",
+            progress_val:   "IA del Jefe Final",
+            sidebar_find:   "🔗 Encu&eacute;ntrame",
+            sidebar_pages:  "📂 P&aacute;ginas",
+            page_devlog:    "Devlog",
+            page_games:     "Todos los Juegos",
+            page_videos:    "Videos",
+            page_about:     "Acerca de M&iacute;",
+            page_links:     "Links",
+            page_merch:     "Merch (pronto)",
+            sidebar_souls:  "💀 Almas Devoradas",
+            sidebar_now:    "🎵 Reproduciendo",
+            sidebar_btn:    "🤝 Mi Bot&oacute;n",
+            sidebar_badge_text: "&iexcl;Libre de usar y enlazar!",
+            footer1: "&#9760; ZombieByte &copy; 2026 &mdash; Hecho con &#10084; y <a href='https://godotengine.org' target='_blank'>Godot Engine</a> &#9760;",
+            footer2: "Alojado en <a href='https://neocities.org' target='_blank'>NeoCities</a> &nbsp;&middot;&nbsp; Mejor a 1024&times;768"
+        }
+    };
+
+    function applyLang(lang) {
+        // Swap all translated elements
+        document.querySelectorAll("[data-i18n]").forEach(function(el) {
+            var key = el.getAttribute("data-i18n");
+            if (T[lang] && T[lang][key] !== undefined) {
+                el.innerHTML = T[lang][key];
+            }
+        });
+        // Highlight active buttons (there are two pairs: desktop + mobile)
+        ["en","es"].forEach(function(l) {
+            var d = document.getElementById("btn-" + l + "-d");
+            var m = document.getElementById("btn-" + l + "-m");
+            if (d) d.classList.toggle("active", l === lang);
+            if (m) m.classList.toggle("active", l === lang);
+        });
+        // Persist + set html lang attribute
+        try { localStorage.setItem("zb-lang", lang); } catch(e) {}
+        document.documentElement.lang = lang;
+    }
+
+    // Expose globally so onclick works
+    window.setLang = applyLang;
+
+    // Auto-detect on load
+    document.addEventListener("DOMContentLoaded", function() {
+        var saved   = null;
+        try { saved = localStorage.getItem("zb-lang"); } catch(e) {}
+        var browser = (navigator.language || navigator.userLanguage || "en").toLowerCase();
+        var lang    = saved || (browser.startsWith("es") ? "es" : "en");
+        applyLang(lang);
+    });
+}
+</script>
+
+
+
+
+<script>
+(function () {
+    var POSTS_PER_PAGE = 5;
+    var allPosts   = [];
+    var filtered   = [];
+    var currentPage = 1;
+    var activeTag   = null;
+
+    /* ── helpers ─────────────────────────────────────── */
+    function getLang() {
+        return document.documentElement.lang === 'es' ? 'es' : 'en';
+    }
+
+    function t(post, field) {
+        var lang = getLang();
+        if (post[field + '_' + lang]) return post[field + '_' + lang];
+        if (post[field + '_en'])      return post[field + '_en'];
+        if (post[field])              return post[field];
+        return '';
+    }
+
+    /* ── render one card ─────────────────────────────── */
+    function renderCard(p) {
+        var tags = (p.tags || []).map(function (tag) {
+            return '<span class="post-tag" data-tag="' + tag + '">' + tag + '</span>';
+        }).join('');
+
+        return (
+            '<article class="blog-post">' +
+                '<div class="blog-post-header">' +
+                    '<span class="blog-post-title">' + t(p, 'title') + '</span>' +
+                    '<span class="blog-post-date">' + (p.date_en || p.date || '') + '</span>' +
+                '</div>' +
+                '<div class="blog-post-body">' +
+                    (p.thumbnail
+                        ? '<img class="blog-post-img" src="' + p.thumbnail + '" alt="' + t(p, 'title') + '">'
+                        : '') +
+                    '<div class="blog-post-text">' +
+                        '<p>' + t(p, 'excerpt') + '</p>' +
+                        (tags ? '<div class="post-tags">' + tags + '</div>' : '') +
+                        '<a href="post.html?id=' + p.id + '" class="read-more" data-i18n="read_more">READ MORE &raquo;</a>' +
+                    '</div>' +
+                '</div>' +
+            '</article>'
+        );
+    }
+
+    /* ── render all visible cards + pagination ───────── */
+    function renderPage() {
+        var container = document.getElementById('devlog-posts-container');
+        if (!filtered.length) {
+            container.innerHTML = '<p class="loading-msg">&#9760; No posts found.</p>';
+            document.getElementById('devlog-pagination').innerHTML = '';
+            return;
+        }
+
+        var total  = Math.ceil(filtered.length / POSTS_PER_PAGE);
+        currentPage = Math.min(currentPage, total);
+        var start  = (currentPage - 1) * POSTS_PER_PAGE;
+        var slice  = filtered.slice(start, start + POSTS_PER_PAGE);
+
+        container.innerHTML = slice.map(renderCard).join('');
+
+        /* re-apply i18n to newly injected nodes */
+        if (typeof applyLang === 'function') applyLang(getLang());
+
+        /* tag click inside cards */
+        container.querySelectorAll('.post-tag').forEach(function (el) {
+            el.addEventListener('click', function () {
+                filterByTag(this.dataset.tag);
+            });
+        });
+
+        /* pagination buttons */
+        var pages = '';
+        for (var i = 1; i <= total; i++) {
+            pages += '<button class="page-btn' + (i === currentPage ? ' active' : '') +
+                     '" data-page="' + i + '">' + i + '</button>';
+        }
+        document.getElementById('devlog-pagination').innerHTML = total > 1 ? pages : '';
+        document.querySelectorAll('.page-btn').forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                currentPage = parseInt(this.dataset.page);
+                renderPage();
+                document.getElementById('content').scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    }
+
+    /* ── filtering logic ─────────────────────────────── */
+    function applyFilters() {
+        var query = document.getElementById('devlog-search').value.toLowerCase().trim();
+        filtered = allPosts.filter(function (p) {
+            var matchTag   = !activeTag || (p.tags || []).indexOf(activeTag) !== -1;
+            var matchText  = !query ||
+                t(p, 'title').toLowerCase().indexOf(query) !== -1 ||
+                t(p, 'excerpt').toLowerCase().indexOf(query) !== -1;
+            return matchTag && matchText;
+        });
+        currentPage = 1;
+        renderPage();
+    }
+
+    function filterByTag(tag) {
+        activeTag = (activeTag === tag) ? null : tag;   // toggle
+        /* highlight active tag button in the filter bar */
+        document.querySelectorAll('#devlog-tags .tag-filter-btn').forEach(function (btn) {
+            btn.classList.toggle('active', btn.dataset.tag === activeTag);
+        });
+        applyFilters();
+    }
+
+    /* ── build tag filter bar ────────────────────────── */
+    function buildTagBar(posts) {
+        var tagSet = {};
+        posts.forEach(function (p) {
+            (p.tags || []).forEach(function (tag) { tagSet[tag] = true; });
+        });
+        var tags = Object.keys(tagSet).sort();
+        if (!tags.length) return;
+
+        var bar = document.getElementById('devlog-tags');
+        bar.innerHTML = tags.map(function (tag) {
+            return '<button class="tag-filter-btn" data-tag="' + tag + '">' + tag + '</button>';
+        }).join('');
+
+        bar.querySelectorAll('.tag-filter-btn').forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                filterByTag(this.dataset.tag);
+            });
+        });
+    }
+
+    /* ── bootstrap ───────────────────────────────────────────── */
+document.addEventListener('DOMContentLoaded', function () {
+
+    document.getElementById('devlog-search').addEventListener('input', applyFilters);
+
+    fetch('posts.json?v=' + Date.now())
+        .then(function (r) { return r.json(); })
+        .then(function (data) {
+            allPosts = (data.posts || []).sort(function (a, b) {
+                return new Date(b.date) - new Date(a.date); // newest first
+            });
+            filtered = allPosts.slice();
+            buildTagBar(allPosts);
+            renderPage();
+        })                                         // ← closes .then(function(data){
+        .catch(function () {
+            document.getElementById('devlog-posts-container').innerHTML =
+                '<p class="loading-msg">&#9760; Could not load posts. Make sure posts.json is uploaded.</p>';
+        });
+
+});                                                // ← closes DOMContentLoaded
+
+    /* re-render when the user switches language */
+    var prev = window.onLangChange;
+    window.onLangChange = function (lang) {
+        if (prev) prev(lang);
+        renderPage();
+    };
+}());
+</script>
+
+</body>
+</html>

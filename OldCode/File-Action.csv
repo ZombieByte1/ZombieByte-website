@@ -1,0 +1,5 @@
+"File","Action"
+"videos.html","Upload as-is"
+"about.html","Edit your bio text first, then upload"
+"links.html","Fill in your social URLs, then upload"
+"videos.json","Upload, replaceYOUTUBE_VIDEO_ID_*with real IDs"

@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ZombieByte — Merch</title>
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --purple:   #8a2be2;
+  --purple2:  #cc44ff;
+  --green:    #00ff00;
+  --red:      #dc143c;
+  --black:    #0a0a0a;
+  --darkbg:   #0d0010;
+  --panel:    #110018;
+  --border:   #3a0060;
+  --text:     #e0d0ff;
+  --subtext:  #aa88cc;
+  --font:     'Press Start 2P', monospace;
+}
+html { scroll-behavior: smooth; }
+body {
+  background-color: var(--darkbg);
+  background-image: url('placeholder_tiled_dark_stone_dungeon_background.png');
+  background-repeat: repeat;
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 10px;
+  line-height: 1.8;
+  min-height: 100vh;
+}
+a { color: var(--purple2); text-decoration: none; }
+a:hover { color: var(--green); text-decoration: underline; }
+body::after {
+  content: '';
+  position: fixed; inset: 0;
+  background: repeating-linear-gradient(to bottom, transparent 0px, transparent 3px, rgba(0,0,0,0.08) 3px, rgba(0,0,0,0.08) 4px);
+  pointer-events: none; z-index: 9999;
+}
+#wrapper {
+  width: 980px; margin: 0 auto;
+  border-left: 3px solid var(--purple);
+  border-right: 3px solid var(--purple);
+  background: rgba(10,0,20,0.92);
+  min-height: 100vh;
+}
+#mobile-topbar { display: none; }
+#nav-toggle    { display: none; }
+#nav-overlay   { display: none; }
+#site-header {
+  width: 100%; height: 190px;
+  background: url('placeholder_header_banner_zombiebyte_purple_horror_game_scene.png') center/cover no-repeat, #1a003a;
+  position: relative; overflow: hidden;
+  border-bottom: 3px solid var(--purple);
+}
+#site-header::before {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(138,43,226,0.25) 100%);
+}
+#header-title { position: absolute; bottom: 14px; left: 20px; z-index: 2; }
+#header-title h1 {
+  font-family: var(--font); font-size: 28px; color: #fff;
+  text-shadow: 0 0 10px var(--purple2), 0 0 30px var(--purple), 3px 3px 0 #000;
+  animation: glitch 3s infinite;
+}
+#header-title p { font-size: 8px; color: var(--purple2); text-shadow: 0 0 6px var(--purple2); margin-top: 6px; }
+@keyframes glitch {
+  0%,90%,100% { text-shadow: 0 0 10px var(--purple2), 0 0 30px var(--purple), 3px 3px 0 #000; transform: none; }
+  92% { transform: skewX(-5deg); text-shadow: -3px 0 #dc143c, 3px 0 #00ff00; }
+  94% { transform: skewX(3deg);  text-shadow: 3px 0 #dc143c, -3px 0 #00ff00; }
+  96% { transform: none; }
+}
+#marquee-bar {
+  background: #1a003a;
+  border-top: 2px solid var(--red); border-bottom: 2px solid var(--red);
+  padding: 6px 0; overflow: hidden; white-space: nowrap;
+}
+.marquee-inner {
+  display: inline-block; animation: scroll-left 30s linear infinite;
+  font-size: 9px; color: var(--red); text-shadow: 0 0 6px var(--red);
+}
+@keyframes scroll-left { from { transform: translateX(100vw); } to { transform: translateX(-100%); } }
+#nav {
+  background: #0d0020; border-bottom: 3px solid var(--purple);
+  padding: 6px 10px; display: flex; align-items: center; gap: 4px; flex-wrap: wrap;
+}
+#nav a.nav-btn {
+  font-family: var(--font); font-size: 7px; color: var(--purple2);
+  background: #1a003a; border: 2px solid var(--purple);
+  padding: 5px 8px; white-space: nowrap; transition: all .2s; text-decoration: none;
+}
+#nav a.nav-btn:hover, #nav a.nav-btn.active {
+  background: var(--purple); color: #fff; box-shadow: 0 0 8px var(--purple2); text-decoration: none;
+}
+#lang-switcher { margin-left: auto; display: flex; gap: 4px; }
+#lang-switcher button {
+  font-family: var(--font); font-size: 7px; padding: 5px 8px;
+  background: #1a003a; border: 2px solid var(--border); color: var(--subtext); cursor: pointer; transition: all .2s;
+}
+#lang-switcher button.active {
+  background: var(--purple); border-color: var(--purple2); color: #fff; box-shadow: 0 0 6px var(--purple2);
+}
+#main-layout { display: flex; align-items: flex-start; padding: 14px 10px; gap: 12px; }
+#sidebar { width: 180px; flex-shrink: 0; display: flex; flex-direction: column; gap: 10px; }
+.sidebar-box { background: var(--panel); border: 2px solid var(--border); padding: 10px; }
+.sidebar-box h3 {
+  font-size: 7px; color: var(--purple2); text-shadow: 0 0 6px var(--purple2);
+  border-bottom: 1px solid var(--border); padding-bottom: 6px; margin-bottom: 8px;
+}
+.sidebar-box p, .sidebar-box a, .sidebar-box li { font-size: 7px; color: var(--subtext); line-height: 1.9; list-style: none; }
+.sidebar-box a:hover { color: var(--green); }
+.sidebar-logo { width: 100%; image-rendering: pixelated; border: 2px solid var(--purple); display: block; margin-bottom: 8px; }
+.social-btn {
+  display: block; text-align: center; font-family: var(--font); font-size: 6px;
+  padding: 6px 4px; border: 2px solid var(--purple); background: #1a003a;
+  color: var(--purple2) !important; margin-bottom: 5px; text-decoration: none !important; transition: all .2s;
+}
+.social-btn:hover { background: var(--purple); color: #fff !important; box-shadow: 0 0 8px var(--purple2); }
+#content { flex: 1; min-width: 0; }
+.section-box { background: var(--panel); border: 2px solid var(--border); padding: 14px; margin-bottom: 14px; }
+.section-box h2 {
+  font-size: 10px; color: var(--purple2); text-shadow: 0 0 8px var(--purple2);
+  border-bottom: 2px solid var(--purple); padding-bottom: 8px; margin-bottom: 14px;
+}
+#footer { background: #07000f; border-top: 3px solid var(--purple); padding: 14px; text-align: center; }
+#footer p { font-size: 7px; color: var(--subtext); margin-bottom: 8px; }
+.footer-links { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-bottom: 10px; }
+.footer-links a { font-size: 7px; color: var(--purple2); }
+.footer-links a:hover { color: var(--green); }
+.footer-badges { display: flex; justify-content: center; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
+.footer-badges img { image-rendering: pixelated; border: 1px solid var(--border); }
+
+/* ── TABLET 601-980px ── */
+@media (max-width: 980px) and (min-width: 601px) {
+  #wrapper { width: 100%; border: none; }
+  #nav { overflow-x: auto; flex-wrap: nowrap; padding: 6px 8px; }
+  #sidebar { width: 165px; }
+}
+
+/* ── MOBILE ≤600px ── */
+@media (max-width: 600px) {
+  #wrapper { width: 100%; border: none; }
+  #mobile-topbar {
+    display: flex; align-items: center; gap: 10px;
+    background: #0d0020; border-bottom: 2px solid var(--purple);
+    padding: 8px 10px; position: sticky; top: 0; z-index: 1000;
+  }
+  #mobile-topbar .mobile-site-title { font-size: 9px; color: #fff; text-shadow: 0 0 8px var(--purple2); flex: 1; }
+  #mobile-topbar .mobile-subtitle   { font-size: 6px; color: var(--purple2); }
+  #mobile-topbar #lang-switcher-mobile { display: flex; gap: 4px; margin-left: auto; }
+  #mobile-topbar #lang-switcher-mobile button {
+    font-family: var(--font); font-size: 6px; padding: 4px 6px;
+    background: #1a003a; border: 2px solid var(--border); color: var(--subtext); cursor: pointer;
+  }
+  #mobile-topbar #lang-switcher-mobile button.active {
+    background: var(--purple); border-color: var(--purple2); color: #fff; box-shadow: 0 0 6px var(--purple2);
+  }
+  .hamburger-label {
+    display: flex; align-items: center; justify-content: center;
+    width: 46px; height: 46px; background: var(--purple);
+    border: 2px solid var(--purple2); color: #fff; font-size: 20px;
+    cursor: pointer; box-shadow: 0 0 10px var(--purple2); border-radius: 4px;
+    flex-shrink: 0; transition: background .2s;
+  }
+  .hamburger-label:hover { background: var(--purple2); }
+  #nav {
+    position: fixed; top: 0; left: -280px;
+    width: 280px; height: 100vh; background: #0a0018;
+    border-right: 3px solid var(--purple);
+    flex-direction: column; align-items: flex-start; flex-wrap: nowrap;
+    gap: 0; padding: 0; overflow-y: auto; z-index: 2000;
+    transition: left .3s ease;
+  }
+  #nav-toggle:checked ~ #wrapper #nav { left: 0; box-shadow: 4px 0 20px rgba(138,43,226,.5); }
+  .nav-drawer-header {
+    display: flex !important; align-items: center; justify-content: space-between;
+    padding: 12px 14px; border-bottom: 2px solid var(--purple);
+    width: 100%; font-size: 8px; color: var(--purple2);
+  }
+  .nav-close-label {
+    display: flex !important; align-items: center; justify-content: center;
+    width: 34px; height: 34px; background: var(--red);
+    border: 2px solid #ff4466; color: #fff; font-size: 14px; cursor: pointer; border-radius: 4px;
+  }
+  #nav a.nav-btn {
+    display: block; width: 100%; padding: 12px 16px; font-size: 8px;
+    border: none; border-bottom: 1px solid var(--border); background: transparent;
+  }
+  #nav a.nav-btn:hover, #nav a.nav-btn.active { background: var(--purple); padding-left: 22px; }
+  #lang-switcher { display: none; }
+  #nav-overlay {
+    display: none; position: fixed; inset: 0;
+    background: rgba(0,0,0,.6); z-index: 1999; cursor: pointer;
+  }
+  #nav-toggle:checked ~ #nav-overlay { display: block; }
+  #back-to-top {
+    position: fixed; bottom: 14px; right: 12px;
+    width: 46px; height: 46px; background: var(--purple);
+    border: 2px solid var(--purple2); color: #fff; font-size: 18px;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 0 10px var(--purple2); border-radius: 4px;
+    z-index: 3000; text-decoration: none; transition: background .2s;
+  }
+  #back-to-top:hover { background: var(--purple2); text-decoration: none; }
+  #site-header { height: 120px; }
+  #header-title { display: none; }
+  #main-layout { flex-direction: column; padding: 10px 8px; gap: 10px; }
+  #content  { order: -1; }
+  #sidebar  { order:  1; width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  #sidebar .sidebar-logo-box { grid-column: span 2; }
+}
+
+
+/* ── MERCH HERO ── */
+#merch-hero { text-align: center; padding: 30px 16px; }
+
+#merch-skull {
+  font-size: 80px; display: block; margin: 0 auto 16px;
+  animation: skull-pulse 2s ease-in-out infinite;
+  filter: drop-shadow(0 0 20px var(--purple2));
+}
+@keyframes skull-pulse {
+  0%,100% { transform: scale(1);    filter: drop-shadow(0 0 20px var(--purple2)); }
+  50%      { transform: scale(1.08); filter: drop-shadow(0 0 40px var(--purple)); }
+}
+#merch-coming-soon {
+  font-size: 22px; color: #fff;
+  text-shadow: 0 0 10px var(--purple2), 0 0 30px var(--purple);
+  animation: glitch 3s infinite; margin-bottom: 10px; display: block;
+}
+#merch-subtitle {
+  font-size: 8px; color: var(--subtext);
+  margin-bottom: 26px; display: block; line-height: 2;
+}
+
+/* countdown */
+#countdown-wrap {
+  display: flex; justify-content: center; gap: 16px; margin: 16px 0 26px; flex-wrap: wrap;
+}
+.countdown-block {
+  background: var(--panel); border: 2px solid var(--purple);
+  padding: 14px 18px; text-align: center;
+  box-shadow: 0 0 10px rgba(138,43,226,.3); min-width: 70px;
+}
+.countdown-num {
+  font-size: 24px; color: var(--purple2);
+  text-shadow: 0 0 10px var(--purple2); display: block; margin-bottom: 6px;
+}
+.countdown-label { font-size: 6px; color: var(--subtext); display: block; }
+
+/* teaser grid */
+#teaser-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 0 0 24px;
+}
+.teaser-card {
+  background: var(--panel); border: 2px solid var(--border);
+  overflow: hidden; position: relative;
+  transition: border-color .2s, box-shadow .2s;
+}
+.teaser-card:hover { border-color: var(--purple2); box-shadow: 0 0 14px rgba(138,43,226,.4); }
+.teaser-card img {
+  width: 100%; aspect-ratio: 1/1; object-fit: cover;
+  image-rendering: pixelated; display: block;
+  filter: brightness(0.4) blur(1px); transition: filter .3s;
+}
+.teaser-card:hover img { filter: brightness(0.6) blur(0px); }
+.teaser-overlay {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 6px;
+}
+.teaser-overlay span { font-size: 8px; color: #fff; text-shadow: 0 0 8px var(--purple2); text-align: center; padding: 0 8px; }
+.teaser-overlay .teaser-cs { font-size: 6px; color: var(--purple2); border: 1px solid var(--purple2); padding: 3px 8px; }
+
+/* notify */
+#notify-box {
+  background: var(--panel); border: 2px solid var(--purple);
+  padding: 20px; max-width: 500px; margin: 0 auto 20px;
+  box-shadow: 0 0 20px rgba(138,43,226,.2);
+}
+#notify-box h3 {
+  font-size: 9px; color: var(--purple2); text-shadow: 0 0 8px var(--purple2);
+  margin-bottom: 10px; text-align: center;
+}
+#notify-box p {
+  font-size: 7px; color: var(--subtext); margin-bottom: 14px; text-align: center; line-height: 2;
+}
+.notify-form { display: flex; gap: 6px; flex-wrap: wrap; }
+.notify-form input {
+  flex: 1; min-width: 180px; font-family: var(--font); font-size: 7px;
+  padding: 8px 10px; background: #07000f; border: 2px solid var(--border); color: var(--text); outline: none;
+}
+.notify-form input:focus { border-color: var(--purple2); box-shadow: 0 0 6px var(--purple2); }
+.notify-form input::placeholder { color: var(--subtext); }
+.notify-form button {
+  font-family: var(--font); font-size: 7px; padding: 8px 14px;
+  background: var(--purple); border: 2px solid var(--purple2); color: #fff;
+  cursor: pointer; transition: all .2s; white-space: nowrap;
+}
+.notify-form button:hover { background: var(--purple2); box-shadow: 0 0 10px var(--purple2); }
+
+/* social nudge */
+#merch-socials {
+  display: flex; justify-content: center; gap: 10px; flex-wrap: wrap;
+}
+#merch-socials a {
+  font-family: var(--font); font-size: 7px; padding: 8px 12px;
+  background: #1a003a; border: 2px solid var(--purple);
+  color: var(--purple2) !important; text-decoration: none !important; transition: all .2s;
+}
+#merch-socials a:hover { background: var(--purple); color: #fff !important; box-shadow: 0 0 8px var(--purple2); }
+
+/* tablet */
+@media (max-width: 980px) and (min-width: 601px) {
+  #teaser-grid { grid-template-columns: repeat(2, 1fr); }
+}
+/* mobile */
+@media (max-width: 600px) {
+  #merch-skull { font-size: 56px; }
+  #merch-coming-soon { font-size: 14px; }
+  #teaser-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+  #countdown-wrap { gap: 8px; }
+  .countdown-block { min-width: 58px; padding: 10px 12px; }
+  .countdown-num { font-size: 18px; }
+  .notify-form { flex-direction: column; }
+  .notify-form input, .notify-form button { width: 100%; }
+}
+</style>
+</head>
+<body>
+<span id="top"></span>
+<input type="checkbox" id="nav-toggle">
+<label id="nav-overlay" for="nav-toggle"></label>
+
+<div id="mobile-topbar">
+  <label class="hamburger-label" for="nav-toggle">&#9776;</label>
+  <div>
+    <div class="mobile-site-title">ZombieByte</div>
+    <div class="mobile-subtitle" data-i18n="subtitle">&#9733; Retro Horror Games from the Crypt &#9733;</div>
+  </div>
+  <div id="lang-switcher-mobile">
+    <button id="lang-en-mob" onclick="setLang('en')">EN</button>
+    <button id="lang-es-mob" onclick="setLang('es')">ES</button>
+  </div>
+</div>
+
+<div id="wrapper">
+  <div id="site-header">
+    <div id="header-title">
+      <h1>ZombieByte</h1>
+      <p data-i18n="subtitle">&#9733; Retro Horror Games from the Crypt &#9733;</p>
+    </div>
+  </div>
+  <div id="marquee-bar">
+    <span class="marquee-inner" data-i18n="marquee">&#9760; ZOMBIEBYTE &#9760; MERCH COMING SOON &#9760; STAY TUNED &#9760; PIXEL HORROR GEAR &#9760;</span>
+  </div>
+  <nav id="nav">
+    <div class="nav-drawer-header" style="display:none;">
+      <span>ZombieByte</span><label class="nav-close-label" for="nav-toggle">&#x2715;</label>
+    </div>
+    <a href="index.html"  class="nav-btn" data-i18n="nav_home">&#9760; HOME</a>
+    <a href="devlog.html" class="nav-btn" data-i18n="nav_devlog">&#128196; DEVLOG</a>
+    <a href="games.html"  class="nav-btn" data-i18n="nav_games">&#127918; GAMES</a>
+    <a href="videos.html" class="nav-btn" data-i18n="nav_videos">&#127909; VIDEOS</a>
+    <a href="about.html"  class="nav-btn" data-i18n="nav_about">&#128123; ABOUT</a>
+    <a href="links.html"  class="nav-btn" data-i18n="nav_links">&#128279; LINKS</a>
+    <a href="merch.html"  class="nav-btn active" data-i18n="nav_merch">&#128587; MERCH</a>
+    <div id="lang-switcher">
+      <button id="lang-en" onclick="setLang('en')">EN</button>
+      <button id="lang-es" onclick="setLang('es')">ES</button>
+    </div>
+  </nav>
+
+  <div id="main-layout">
+    <aside id="sidebar">
+      <div class="sidebar-box sidebar-logo-box">
+        <img src="placeholder_zombiebyte_logo_purple_skull_pixel.png" alt="ZombieByte Logo" class="sidebar-logo">
+        <a href="https://zombiebyte.itch.io/" target="_blank" class="social-btn">&#127918; ITCH.IO</a>
+        <a href="#" target="_blank" class="social-btn">&#128172; DISCORD</a>
+        <a href="#" target="_blank" class="social-btn">&#9829; PATREON</a>
+        <a href="#" target="_blank" class="social-btn">&#127909; YOUTUBE</a>
+        <a href="#" target="_blank" class="social-btn">&#9654; TIKTOK</a>
+      </div>
+      <div class="sidebar-box">
+        <h3 data-i18n="sidebar_pages">&#9760; PAGES</h3>
+        <a href="index.html"  style="display:block;font-size:7px;color:var(--subtext);padding:3px 0;" data-i18n="nav_home">&#9660; Home</a>
+        <a href="devlog.html" style="display:block;font-size:7px;color:var(--subtext);padding:3px 0;" data-i18n="nav_devlog">&#9660; Devlog</a>
+        <a href="games.html"  style="display:block;font-size:7px;color:var(--subtext);padding:3px 0;" data-i18n="nav_games">&#9660; Games</a>
+        <a href="videos.html" style="display:block;font-size:7px;color:var(--subtext);padding:3px 0;" data-i18n="nav_videos">&#9660; Videos</a>
+        <a href="merch.html"  style="display:block;font-size:7px;color:var(--purple2);padding:3px 0;" data-i18n="nav_merch">&#9660; Merch</a>
+        <a href="about.html"  style="display:block;font-size:7px;color:var(--subtext);padding:3px 0;" data-i18n="nav_about">&#9660; About</a>
+        <a href="links.html"  style="display:block;font-size:7px;color:var(--subtext);padding:3px 0;" data-i18n="nav_links">&#9660; Links</a>
+      </div>
+    </aside>
+
+    <main id="content">
+      <div class="section-box">
+        <div id="merch-hero">
+          <span id="merch-skull">&#9760;</span>
+          <span id="merch-coming-soon" data-i18n="merch_title">COMING SOON</span>
+          <span id="merch-subtitle" data-i18n="merch_subtitle">The ZombieByte crypt store is under construction.<br>Tees, hoodies, stickers &amp; pixel horror gear on the way.</span>
+
+          <div id="countdown-wrap">
+            <div class="countdown-block">
+              <span class="countdown-num" id="cd-days">--</span>
+              <span class="countdown-label" data-i18n="cd_days">DAYS</span>
+            </div>
+            <div class="countdown-block">
+              <span class="countdown-num" id="cd-hours">--</span>
+              <span class="countdown-label" data-i18n="cd_hours">HOURS</span>
+            </div>
+            <div class="countdown-block">
+              <span class="countdown-num" id="cd-mins">--</span>
+              <span class="countdown-label" data-i18n="cd_mins">MINS</span>
+            </div>
+            <div class="countdown-block">
+              <span class="countdown-num" id="cd-secs">--</span>
+              <span class="countdown-label" data-i18n="cd_secs">SECS</span>
+            </div>
+          </div>
+
+          <div id="teaser-grid">
+            <div class="teaser-card">
+              <img src="placeholder_merch_tshirt_zombiebyte_skull_design.png" alt="T-Shirt teaser">
+              <div class="teaser-overlay">
+                <span>&#128587;</span>
+                <span data-i18n="teaser_tshirt">SKULL T-SHIRT</span>
+                <span class="teaser-cs" data-i18n="teaser_cs">COMING SOON</span>
+              </div>
+            </div>
+            <div class="teaser-card">
+              <img src="placeholder_merch_hoodie_zombiebyte_design.png" alt="Hoodie teaser">
+              <div class="teaser-overlay">
+                <span>&#129495;</span>
+                <span data-i18n="teaser_hoodie">HORROR HOODIE</span>
+                <span class="teaser-cs" data-i18n="teaser_cs">COMING SOON</span>
+              </div>
+            </div>
+            <div class="teaser-card">
+              <img src="placeholder_merch_sticker_pack_pixel_monsters.png" alt="Stickers teaser">
+              <div class="teaser-overlay">
+                <span>&#127914;</span>
+                <span data-i18n="teaser_stickers">PIXEL STICKER PACK</span>
+                <span class="teaser-cs" data-i18n="teaser_cs">COMING SOON</span>
+              </div>
+            </div>
+          </div>
+
+          <div id="notify-box">
+            <h3 data-i18n="notify_title">&#9760; GET NOTIFIED &#9760;</h3>
+            <p data-i18n="notify_desc">Drop your email and be the first to know when the store opens. No spam — just horror.</p>
+            <div class="notify-form">
+              <input type="email" id="notify-email" placeholder="your@email.com">
+              <button onclick="handleNotify()" data-i18n="notify_btn">NOTIFY ME</button>
+            </div>
+            <p id="notify-msg" style="margin-top:10px;color:var(--green);display:none;" data-i18n="notify_thanks">&#9760; You're on the list!</p>
+          </div>
+
+          <div id="merch-socials">
+            <a href="#" target="_blank">&#128172; DISCORD</a>
+            <a href="#" target="_blank">&#9829; PATREON</a>
+            <a href="#" target="_blank">&#127909; YOUTUBE</a>
+            <a href="#" target="_blank">&#9654; TIKTOK</a>
+            <a href="https://zombiebyte.itch.io/" target="_blank">&#127918; ITCH.IO</a>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <footer id="footer">
+    <div class="footer-links">
+      <a href="index.html"  data-i18n="nav_home">Home</a>
+      <a href="devlog.html" data-i18n="nav_devlog">Devlog</a>
+      <a href="games.html"  data-i18n="nav_games">Games</a>
+      <a href="videos.html" data-i18n="nav_videos">Videos</a>
+      <a href="about.html"  data-i18n="nav_about">About</a>
+      <a href="links.html"  data-i18n="nav_links">Links</a>
+      <a href="merch.html"  data-i18n="nav_merch">Merch</a>
+    </div>
+    <p data-i18n="footer_copy">&copy; 2026 ZombieByte. All Rights Reserved.</p>
+    <p data-i18n="footer_made">Made with &#9760; and Godot Engine.</p>
+    <div class="footer-badges">
+      <img src="placeholder_badge_made_with_godot_88x31.png" width="88" height="31" alt="Godot">
+      <img src="placeholder_badge_neocities_88x31.png"        width="88" height="31" alt="NeoCities">
+      <img src="placeholder_badge_html_css_88x31.png"         width="88" height="31" alt="HTML CSS">
+      <img src="placeholder_zombiebyte_88x31_button_for_linking.png" width="88" height="31" alt="ZombieByte">
+    </div>
+  </footer>
+</div>
+
+<a href="#top" id="back-to-top" title="Back to top">&#9650;</a>
+
+<script>
+const i18n = {
+  en: {
+    subtitle:"★ Retro Horror Games from the Crypt ★",
+    marquee:"☠ ZOMBIEBYTE ☠ MERCH COMING SOON ☠ STAY TUNED ☠ PIXEL HORROR GEAR ☠",
+    nav_home:"☠ HOME", nav_devlog:"📄 DEVLOG", nav_games:"🎮 GAMES",
+    nav_videos:"🎥 VIDEOS", nav_about:"👻 ABOUT", nav_links:"🔗 LINKS", nav_merch:"👕 MERCH",
+    sidebar_pages:"☠ PAGES",
+    merch_title:"COMING SOON",
+    merch_subtitle:"The ZombieByte crypt store is under construction.<br>Tees, hoodies, stickers & pixel horror gear on the way.",
+    cd_days:"DAYS", cd_hours:"HOURS", cd_mins:"MINS", cd_secs:"SECS",
+    teaser_tshirt:"SKULL T-SHIRT", teaser_hoodie:"HORROR HOODIE",
+    teaser_stickers:"PIXEL STICKER PACK", teaser_cs:"COMING SOON",
+    notify_title:"☠ GET NOTIFIED ☠",
+    notify_desc:"Drop your email and be the first to know when the store opens. No spam — just horror.",
+    notify_btn:"NOTIFY ME",
+    notify_thanks:"☠ You're on the list! We'll summon you when the store opens.",
+    footer_copy:"© 2026 ZombieByte. All Rights Reserved.",
+    footer_made:"Made with ☠ and Godot Engine."
+  },
+  es: {
+    subtitle:"★ Juegos de Terror Retro desde la Cripta ★",
+    marquee:"☠ ZOMBIEBYTE ☠ MERCH PRÓXIMAMENTE ☠ MANTENTE AL TANTO ☠ ROPA DE TERROR PIXEL ☠",
+    nav_home:"☠ INICIO", nav_devlog:"📄 DEVLOG", nav_games:"🎮 JUEGOS",
+    nav_videos:"🎥 VIDEOS", nav_about:"👻 ACERCA", nav_links:"🔗 LINKS", nav_merch:"👕 MERCH",
+    sidebar_pages:"☠ PÁGINAS",
+    merch_title:"PRÓXIMAMENTE",
+    merch_subtitle:"La tienda de la cripta ZombieByte está en construcción.<br>Camisetas, sudaderas, stickers y más en camino.",
+    cd_days:"DÍAS", cd_hours:"HORAS", cd_mins:"MINS", cd_secs:"SEGS",
+    teaser_tshirt:"CAMISETA CALAVERA", teaser_hoodie:"SUDADERA DE TERROR",
+    teaser_stickers:"PACK DE STICKERS PIXEL", teaser_cs:"PRÓXIMAMENTE",
+    notify_title:"☠ AVÍSAME ☠",
+    notify_desc:"Deja tu correo y sé el primero en saber cuando abra la tienda. Sin spam — solo terror.",
+    notify_btn:"AVÍSAME",
+    notify_thanks:"☠ ¡Estás en la lista! Te invocaremos cuando abra la tienda.",
+    footer_copy:"© 2026 ZombieByte. Todos los Derechos Reservados.",
+    footer_made:"Hecho con ☠ y Godot Engine."
+  }
+};
+
+function setLang(lang) {
+  localStorage.setItem('zb_lang', lang);
+  document.documentElement.lang = lang;
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (i18n[lang][key]) el.innerHTML = i18n[lang][key];
+  });
+  ['lang-en','lang-es','lang-en-mob','lang-es-mob'].forEach(id => {
+    const btn = document.getElementById(id);
+    if (btn) btn.classList.toggle('active', btn.id.includes(lang === 'en' ? 'en' : 'es'));
+  });
+}
+function detectLang() {
+  const saved = localStorage.getItem('zb_lang');
+  if (saved) return saved;
+  return (navigator.language||'').toLowerCase().startsWith('es') ? 'es' : 'en';
+}
+
+/* countdown — change this date to your actual target */
+const TARGET = new Date('2026-09-01T00:00:00');
+function updateCountdown() {
+  const diff = TARGET - new Date();
+  if (diff <= 0) {
+    ['cd-days','cd-hours','cd-mins','cd-secs'].forEach(id => document.getElementById(id).textContent = '00');
+    return;
+  }
+  document.getElementById('cd-days').textContent  = String(Math.floor(diff/864e5)).padStart(2,'0');
+  document.getElementById('cd-hours').textContent = String(Math.floor((diff%864e5)/36e5)).padStart(2,'0');
+  document.getElementById('cd-mins').textContent  = String(Math.floor((diff%36e5)/6e4)).padStart(2,'0');
+  document.getElementById('cd-secs').textContent  = String(Math.floor((diff%6e4)/1e3)).padStart(2,'0');
+}
+updateCountdown();
+setInterval(updateCountdown, 1000);
+
+function handleNotify() {
+  const email = document.getElementById('notify-email').value;
+  if (!email || !email.includes('@')) return;
+  document.getElementById('notify-msg').style.display = 'block';
+  document.getElementById('notify-email').value = '';
+}
+
+setLang(detectLang());
+</script>
+</body>
+</html>

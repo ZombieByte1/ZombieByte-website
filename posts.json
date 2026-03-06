@@ -1,0 +1,159 @@
+{
+  "posts": [
+    {
+      "id": "other-random-123",
+      "date": "2026-03-15",
+      "date_en": "March 15, 2026",
+      "date_es": "15 de Marzo, 2026",
+      "thumbnail": "placeholder_devlog_post1_guinda_boss_fight_screenshot.png",
+      "title_en": "other random title",
+      "title_es": "Guinda — Progreso del Jefe Final",
+      "excerpt_en": "Working on the main boss fight for Guinda this week. The nun character now has her full attack animation — bow and all — and the enemy AI is starting to feel properly scary.",
+      "excerpt_es": "Esta semana trabajé en la batalla principal de Guinda. La monja ya tiene su animación de ataque completa —arco incluido— y la IA del enemigo empieza a sentirse realmente aterradora.",
+      "content_en": [
+        "Working on the main boss fight for Guinda this week. The nun character now has her full attack animation — bow and all — and the enemy AI is starting to feel properly scary.",
+        "Ran into some collision detection bugs in Godot but it’s all sorted now. More WIP footage on the Discord!",
+        "<img src='placeholder_devlog_post1_boss_fight_wide.png' alt='Boss Fight Screenshot' style='width:100%;border:2px solid #8a2be2;image-rendering:pixelated;margin:10px 0;'>",
+        "The boss has three phases, each with different attack patterns. Phase 1 is a ranged attack, Phase 2 adds a charge, and Phase 3 summons smaller spider enemies.",
+        "Really happy with how the PS1-era aesthetic is coming together. Low-poly models and pre-baked lighting give it that classic horror feel."
+      ],
+      "content_es": [
+        "Esta semana trabajé en la batalla principal de Guinda. La monja ya tiene su animación de ataque completa —arco incluido— y la IA del enemigo empieza a sentirse realmente aterradora.",
+        "Tuve algunos bugs de detección de colisiones en Godot pero ya están resueltos. ¡Más footage en el Discord!",
+        "<img src='placeholder_devlog_post1_boss_fight_wide.png' alt='Captura del Jefe Final' style='width:100%;border:2px solid #8a2be2;image-rendering:pixelated;margin:10px 0;'>",
+        "El jefe tiene tres fases con patrones de ataque diferentes. La fase 1 es a distancia, la fase 2 añade una carga, y la fase 3 invoca arañas más pequeñas.",
+        "Muy contento con cómo está quedando la estética PS1. Los modelos low-poly y la iluminación pre-renderizada dan ese toque clásico de terror."
+      ],
+      "tags": [
+        "guinda",
+        "godot",
+        "boss-fight",
+        "ps1"
+      ]
+    },
+    {
+      "id": "randmon-234",
+      "date": "2026-03-05",
+      "date_en": "March 05, 2026",
+      "date_es": "05 de Marzo, 2026",
+      "thumbnail": "placeholder_devlog_post1_guinda_boss_fight_screenshot.png",
+      "title_en": "random title",
+      "title_es": "Guinda — Progreso del Jefe Final",
+      "excerpt_en": "Working on the main boss fight for Guinda this week. The nun character now has her full attack animation — bow and all — and the enemy AI is starting to feel properly scary.",
+      "excerpt_es": "Esta semana trabajé en la batalla principal de Guinda. La monja ya tiene su animación de ataque completa —arco incluido— y la IA del enemigo empieza a sentirse realmente aterradora.",
+      "content_en": [
+        "Working on the main boss fight for Guinda this week. The nun character now has her full attack animation — bow and all — and the enemy AI is starting to feel properly scary.",
+        "Ran into some collision detection bugs in Godot but it’s all sorted now. More WIP footage on the Discord!",
+        "<img src='placeholder_devlog_post1_boss_fight_wide.png' alt='Boss Fight Screenshot' style='width:100%;border:2px solid #8a2be2;image-rendering:pixelated;margin:10px 0;'>",
+        "The boss has three phases, each with different attack patterns. Phase 1 is a ranged attack, Phase 2 adds a charge, and Phase 3 summons smaller spider enemies.",
+        "Really happy with how the PS1-era aesthetic is coming together. Low-poly models and pre-baked lighting give it that classic horror feel."
+      ],
+      "content_es": [
+        "Esta semana trabajé en la batalla principal de Guinda. La monja ya tiene su animación de ataque completa —arco incluido— y la IA del enemigo empieza a sentirse realmente aterradora.",
+        "Tuve algunos bugs de detección de colisiones en Godot pero ya están resueltos. ¡Más footage en el Discord!",
+        "<img src='placeholder_devlog_post1_boss_fight_wide.png' alt='Captura del Jefe Final' style='width:100%;border:2px solid #8a2be2;image-rendering:pixelated;margin:10px 0;'>",
+        "El jefe tiene tres fases con patrones de ataque diferentes. La fase 1 es a distancia, la fase 2 añade una carga, y la fase 3 invoca arañas más pequeñas.",
+        "Muy contento con cómo está quedando la estética PS1. Los modelos low-poly y la iluminación pre-renderizada dan ese toque clásico de terror."
+      ],
+      "tags": [
+        "guinda",
+        "godot",
+        "boss-fight",
+        "ps1"
+      ]
+    },
+    {
+      "id": "boss-fight-march-2026",
+      "date": "2026-03-04",
+      "date_en": "March 04, 2026",
+      "date_es": "04 de Marzo, 2026",
+      "thumbnail": "placeholder_devlog_post1_guinda_boss_fight_screenshot.png",
+      "title_en": "Guinda — Boss Fight Progress",
+      "title_es": "Guinda — Progreso del Jefe Final",
+      "excerpt_en": "Working on the main boss fight for Guinda this week. The nun character now has her full attack animation — bow and all — and the enemy AI is starting to feel properly scary.",
+      "excerpt_es": "Esta semana trabajé en la batalla principal de Guinda. La monja ya tiene su animación de ataque completa —arco incluido— y la IA del enemigo empieza a sentirse realmente aterradora.",
+      "content_en": [
+        "Working on the main boss fight for Guinda this week. The nun character now has her full attack animation — bow and all — and the enemy AI is starting to feel properly scary.",
+        "Ran into some collision detection bugs in Godot but it’s all sorted now. More WIP footage on the Discord!",
+        "<img src='placeholder_devlog_post1_boss_fight_wide.png' alt='Boss Fight Screenshot' style='width:100%;border:2px solid #8a2be2;image-rendering:pixelated;margin:10px 0;'>",
+        "The boss has three phases, each with different attack patterns. Phase 1 is a ranged attack, Phase 2 adds a charge, and Phase 3 summons smaller spider enemies.",
+        "Really happy with how the PS1-era aesthetic is coming together. Low-poly models and pre-baked lighting give it that classic horror feel."
+      ],
+      "content_es": [
+        "Esta semana trabajé en la batalla principal de Guinda. La monja ya tiene su animación de ataque completa —arco incluido— y la IA del enemigo empieza a sentirse realmente aterradora.",
+        "Tuve algunos bugs de detección de colisiones en Godot pero ya están resueltos. ¡Más footage en el Discord!",
+        "<img src='placeholder_devlog_post1_boss_fight_wide.png' alt='Captura del Jefe Final' style='width:100%;border:2px solid #8a2be2;image-rendering:pixelated;margin:10px 0;'>",
+        "El jefe tiene tres fases con patrones de ataque diferentes. La fase 1 es a distancia, la fase 2 añade una carga, y la fase 3 invoca arañas más pequeñas.",
+        "Muy contento con cómo está quedando la estética PS1. Los modelos low-poly y la iluminación pre-renderizada dan ese toque clásico de terror."
+      ],
+      "tags": [
+        "guinda",
+        "godot",
+        "boss-fight",
+        "ps1"
+      ]
+    },
+    {
+      "id": "dungeon-halls-feb-2026",
+      "date": "2026-02-22",
+      "date_en": "February 22, 2026",
+      "date_es": "22 de Febrero, 2026",
+      "thumbnail": "placeholder_devlog_post2_dungeon_corridor_spider_enemy.png",
+      "title_en": "New Level — The Dungeon Halls",
+      "title_es": "Nuevo Nivel — Los Pasillos de la Mazmorra",
+      "excerpt_en": "The dungeon corridor section is done. The spider hanging from the ceiling is now fully animated and hunting the player in proper PS1 low-poly style.",
+      "excerpt_es": "La sección del pasillo de la mazmorra está terminada. La araña colgando del techo ya está completamente animada y persigue al jugador con estilo low-poly PS1.",
+      "content_en": [
+        "The dungeon corridor section is done. The spider hanging from the ceiling is now fully animated and hunting the player in proper PS1 low-poly style.",
+        "<img src='placeholder_devlog_post2_spider_corridor_wide.png' alt='Spider Corridor' style='width:100%;border:2px solid #8a2be2;image-rendering:pixelated;margin:10px 0;'>",
+        "Heavy inspiration taken from N64-era horror titles for the lighting — blurry shadows included.",
+        "The corridors use a tile-based system making new levels easy to build. Using Godot’s GridMap for this which has been a huge time saver.",
+        "Next up: connecting the dungeon section to the main castle area and adding more enemy types."
+      ],
+      "content_es": [
+        "La sección del pasillo de la mazmorra está terminada. La araña colgando del techo ya está completamente animada y persigue al jugador con estilo low-poly PS1.",
+        "<img src='placeholder_devlog_post2_spider_corridor_wide.png' alt='Corredor con Araña' style='width:100%;border:2px solid #8a2be2;image-rendering:pixelated;margin:10px 0;'>",
+        "Gran inspiración en los títulos de terror de la era N64 para la iluminación — sombras borrosas incluidas.",
+        "Los corredores usan un sistema de tiles que facilita construir nuevos niveles. El GridMap de Godot ha sido un gran ahorro de tiempo.",
+        "Lo siguiente: conectar la mazmorra con el área del castillo y añadir más tipos de enemigos."
+      ],
+      "tags": [
+        "guinda",
+        "dungeon",
+        "enemy-design",
+        "n64"
+      ]
+    },
+    {
+      "id": "classroom-level-feb-2026",
+      "date": "2026-02-12",
+      "date_en": "February 12, 2026",
+      "date_es": "12 de Febrero, 2026",
+      "thumbnail": "placeholder_devlog_post3_gameboy_classroom_topdown_level.png",
+      "title_en": "Classroom Level Reveal",
+      "title_es": "Revelación del Nivel Aula",
+      "excerpt_en": "Revealed the classroom level! The Game Boy-style top-down view is a fun detour — strict 4-color green palette, pixel characters, the works.",
+      "excerpt_es": "¡Revelé el nivel del aula! La vista cenital estilo Game Boy es un desvío divertido — paleta de 4 colores verde, personajes en píxeles y todo lo demás.",
+      "content_en": [
+        "Revealed the classroom level! The Game Boy-style top-down view is a fun detour — strict 4-color green palette, pixel characters, the works. First teaser dropped on TikTok.",
+        "<img src='placeholder_devlog_post3_classroom_gameboy_wide.png' alt='Classroom Level' style='width:100%;border:2px solid #8a2be2;image-rendering:pixelated;margin:10px 0;'>",
+        "This level acts as a flashback sequence — a memory from before the main game’s events. The Game Boy aesthetic makes it feel distant and faded, like a half-remembered dream.",
+        "Built in Godot with a top-down orthographic camera. Designing each sprite manually at 8x8 pixels was meditative.",
+        "The TikTok response was amazing. A lot of people connected with the Game Boy nostalgia."
+      ],
+      "content_es": [
+        "¡Revelé el nivel del aula! La vista cenital estilo Game Boy es un desvío divertido — paleta de 4 colores verde, personajes en píxeles y todo lo demás. El primer teaser cayó en TikTok.",
+        "<img src='placeholder_devlog_post3_classroom_gameboy_wide.png' alt='Nivel Aula' style='width:100%;border:2px solid #8a2be2;image-rendering:pixelated;margin:10px 0;'>",
+        "Este nivel es una secuencia de flashback — un recuerdo de antes del juego. La estética Game Boy lo hace sentir distante y desteñido, como un sueño a medias.",
+        "Construído en Godot con cámara ortográfica cenital. Diseñar cada sprite a mano en 8x8 píxeles fue meditativo.",
+        "La respuesta en TikTok fue increíble. Mucha gente conectó con la nostalgia Game Boy."
+      ],
+      "tags": [
+        "guinda",
+        "game-boy",
+        "level-design",
+        "pixel-art"
+      ]
+    }
+  ]
+}

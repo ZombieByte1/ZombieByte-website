@@ -1,0 +1,96 @@
+{
+  "games": [
+    {
+      "id": "guinda",
+      "title": "Guinda",
+      "thumbnail": "placeholder_game_guinda_cover_art.png",
+      "year": "2024",
+      "status": "released",
+      "status_en": "Released",
+      "status_es": "Disponible",
+      "links": [
+        {
+          "platform": "itch",
+          "url": "https://zombiebyte.itch.io/guinda",
+          "label_en": "Get it on Itch.io",
+          "label_es": "Consíguelo en Itch.io"
+        }
+      ]
+    },
+    {
+      "id": "game2",
+      "title": "Game Title 2",
+      "thumbnail": "placeholder_game2_cover_art.png",
+      "year": "2023",
+      "status": "released",
+      "status_en": "Released",
+      "status_es": "Disponible",
+      "links": [
+        {
+          "platform": "itch",
+          "url": "https://zombiebyte.itch.io/",
+          "label_en": "Get it on Itch.io",
+          "label_es": "Consíguelo en Itch.io"
+        },
+        {
+          "platform": "android",
+          "url": "https://play.google.com/store/",
+          "label_en": "Get it on Android",
+          "label_es": "Consíguelo en Android"
+        }
+      ]
+    },
+    {
+      "id": "game3",
+      "title": "Game Title 3",
+      "thumbnail": "placeholder_game3_cover_art.png",
+      "year": "TBD",
+      "status": "in_development",
+      "status_en": "In Development",
+      "status_es": "En Desarrollo",
+      "links": [
+        {
+          "platform": "itch",
+          "url": "https://zombiebyte.itch.io/",
+          "label_en": "Wishlist on Itch.io",
+          "label_es": "Añadir a lista en Itch.io"
+        },
+        {
+          "platform": "steam",
+          "url": "https://store.steampowered.com/",
+          "label_en": "Wishlist on Steam",
+          "label_es": "Añadir a lista en Steam"
+        }
+      ]
+    },
+    {
+      "id": "game4",
+      "title": "Game Title 4",
+      "thumbnail": "placeholder_game4_cover_art.png",
+      "year": "2022",
+      "status": "released",
+      "status_en": "Released",
+      "status_es": "Disponible",
+      "links": [
+        {
+          "platform": "itch",
+          "url": "https://zombiebyte.itch.io/",
+          "label_en": "Get it on Itch.io",
+          "label_es": "Consíguelo en Itch.io"
+        },
+        {
+          "platform": "steam",
+          "url": "https://store.steampowered.com/",
+          "label_en": "Get it on Steam",
+          "label_es": "Consíguelo en Steam"
+        },
+        {
+          "platform": "android",
+          "url": "https://play.google.com/store/",
+          "label_en": "Get it on Android",
+          "label_es": "Consíguelo en Android"
+        }
+      ]
+    }
+  ]
+}

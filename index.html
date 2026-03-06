@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZombieByte | Home</title>
+    <link rel="icon" href="placeholder_zombiebyte_favicon_skull.ico">
+    <style>
+        /* === ALL YOUR CSS STAYS HERE (shared) === */
+        /* Or move to a shared style.css and use <link rel="stylesheet" href="style.css"> */
+        
+    </style>
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<span id="top"></span>
+<input type="checkbox" id="nav-toggle">
+<label for="nav-toggle" id="nav-overlay"></label>
+
+<div id="wrapper">
+
+    <div id="header-placeholder"></div>
+
+    <!-- MAIN LAYOUT -->
+    <div id="main-layout">
+        <div id="sidebar-placeholder"></div>
+
+        <!-- ✏️ ONLY THIS CHANGES PER PAGE -->
+        <main id="content">
+
+           
+            <h2 class="section-heading"><span data-i18n="section_devlog">Latest Devlog</span> <span class="new-tag" data-i18n="new_tag">NEW</span></h2>
+
+            <div id="latest-posts-container">
+              <p class="loading-msg" data-i18n="loading">&#9760; Loading...</p>
+            </div>
+            <a href="devlog.html" class="view-all" data-i18n="view_all_posts">VIEW ALL POSTS &raquo;</a>
+            <hr class="pixel-divider">
+
+            <h2 class="section-heading"><span data-i18n="section_games">My Games</span></h2>
+            <div class="games-grid">
+                <a href="https://zombiebyte.itch.io/" target="_blank" class="game-card">
+                    <img src="placeholder_game_guinda_cover_art_nun_ps1_style.png" alt="Guinda">
+                    <span class="game-card-title" data-i18n="game1_title">Guinda<br>(In Dev)</span>
+                </a>
+                <a href="https://zombiebyte.itch.io/" target="_blank" class="game-card">
+                    <img src="placeholder_game2_cover_art_retro_horror.png" alt="Game 2">
+                    <span class="game-card-title" data-i18n="game2_title">Game 2<br>Title Here</span>
+                </a>
+                <a href="https://zombiebyte.itch.io/" target="_blank" class="game-card">
+                    <img src="placeholder_game3_cover_art_retro_horror.png" alt="Game 3">
+                    <span class="game-card-title" data-i18n="game3_title">Game 3<br>Title Here</span>
+                </a>
+            </div>
+            <a href="games.html" class="view-all" data-i18n="view_all_games">VIEW ALL GAMES &raquo;</a>
+            <hr class="pixel-divider">
+
+            <h2 class="section-heading"><span data-i18n="section_videos">Latest Videos</span></h2>
+            <div class="videos-grid">
+                <div class="video-embed-box">
+                    <p class="video-label" data-i18n="yt_label">&#9654; LATEST YOUTUBE</p>
+                    <iframe src="https://www.youtube.com/embed/VIDEO_ID_HERE" allowfullscreen title="YouTube"></iframe>
+                </div>
+                <div class="video-embed-box">
+                    <p class="video-label" data-i18n="tt_label">&#9834; LATEST TIKTOK</p>
+                    <iframe src="https://www.tiktok.com/embed/v2/TIKTOK_VIDEO_ID_HERE" allowfullscreen title="TikTok"></iframe>
+                </div>
+            </div>
+            <a href="videos.html" class="view-all" data-i18n="view_all_videos">VIEW ALL VIDEOS &raquo;</a>
+            <hr class="pixel-divider">
+
+            <h2 class="section-heading"><span data-i18n="section_merch">Merch</span> <span class="new-tag" data-i18n="soon_tag">SOON</span></h2>
+            <div class="merch-teaser">
+                <img src="placeholder_merch_teaser_zombiebyte_tshirt_with_skull_design.png" alt="Merch Coming Soon">
+                <p class="merch-teaser-text">
+                    <span data-i18n="merch_soon">&#9760; MERCH COMING SOON &#9760;</span><br>
+                    <span style="font-size:7px;color:#333;" data-i18n="merch_sub">T-shirts &middot; Stickers &middot; Prints</span>
+                </p>
+            </div>
+
+
+        </main>
+        <!-- END CONTENT -->
+
+    </div><!-- /#main-layout -->
+
+    <div id="footer-placeholder"></div>
+
+</div><!-- /#wrapper -->
+
+<a href="#top" id="back-to-top" title="Back to top">&#9650;</a>
+
+<!-- Component Loader -->
+<script>
+function loadComponent(id, file, callback) {
+    fetch(file)
+        .then(r => r.text())
+        .then(html => {
+            document.getElementById(id).innerHTML = html;
+            if (callback) callback();
+        });
+}
+
+// Load all shared components, then initialize i18n
+loadComponent('header-placeholder',  'components/header.html');
+loadComponent('sidebar-placeholder', 'components/sidebar.html');
+loadComponent('footer-placeholder',  'components/footer.html', function() {
+    // i18n runs AFTER all components are loaded
+    initI18n();
+});
+</script>
+
+<!-- Your i18n script (wrap it in a function called initI18n) -->
+<script>
+function initI18n() {
+    // === YOUR EXISTING i18n CODE HERE ===
+    // Just wrap the self-executing function body inside initI18n()
+     var T = {
+        en: {
+            subtitle:       "&#9733; Retro Horror Games from the Crypt &#9733;",
+            marquee:        "&#9760; NEW GAME IN DEVELOPMENT &mdash; STAY TUNED &#9760; &nbsp;&nbsp;&nbsp; 🎮 INSPIRED BY N64 &middot; PS1 &middot; PS2 &middot; GAMECUBE &middot; GAME BOY 🎮 &nbsp;&nbsp;&nbsp; &#9760; CHECK OUT THE LATEST DEVLOG BELOW &#9760; &nbsp;&nbsp;&nbsp; 💀 JOIN THE DISCORD &mdash; LINK IN SIDEBAR 💀 &nbsp;&nbsp;&nbsp; 🕹 MADE WITH GODOT ENGINE 🕹 &nbsp;&nbsp;&nbsp;",
+            nav_home:       "🏠 Home",
+            nav_devlog:     "📝 Devlog",
+            nav_games:      "🎮 Games",
+            nav_videos:     "📺 Videos",
+            nav_about:      "💀 About",
+            nav_links:      "🔗 Links",
+            nav_merch:      "👕 Merch",
+            section_devlog: "Latest Devlog",
+            new_tag:        "NEW",
+            read_more:      "READ MORE &raquo;",
+            view_all_posts: "VIEW ALL POSTS &raquo;",
+            section_games:  "My Games",
+            view_all_games: "VIEW ALL GAMES &raquo;",
+            section_videos: "Latest Videos",
+            yt_label:       "&#9654; LATEST YOUTUBE",
+            tt_label:       "&#9834; LATEST TIKTOK",
+            view_all_videos:"VIEW ALL VIDEOS &raquo;",
+            section_merch:  "Merch",
+            soon_tag:       "SOON",
+            merch_soon:     "&#9760; MERCH COMING SOON &#9760;",
+            merch_sub:      "T-shirts &middot; Stickers &middot; Prints",
+            sidebar_status: "👾 Dev Status",
+            working_on:     "Working on:",
+            mood_label:     "Mood:",
+            mood_val:       "☕ Caffeinated",
+            progress_label: "Progress:",
+            progress_val:   "Boss Fight AI",
+            sidebar_find:   "🔗 Find Me",
+            sidebar_pages:  "📂 Pages",
+            page_devlog:    "Devlog",
+            page_games:     "All Games",
+            page_videos:    "Videos",
+            page_about:     "About Me",
+            page_links:     "Links",
+            page_merch:     "Merch (soon)",
+            sidebar_souls:  "💀 Souls Devoured",
+            sidebar_now:    "🎵 Now Playing",
+            sidebar_btn:    "🤝 My Button",
+            sidebar_badge_text: "Free to use &amp; link!",
+            loading: "&#9760; Loading...",
+            loading: "&#9760; Cargando...",
+            footer1: "&#9760; ZombieByte &copy; 2026 &mdash; Made with &#10084; and <a href='https://godotengine.org' target='_blank'>Godot Engine</a> &#9760;",
+            footer2: "Hosted on <a href='https://neocities.org' target='_blank'>NeoCities</a> &nbsp;&middot;&nbsp; Best viewed at 1024&times;768"
+        },
+        es: {
+            subtitle:       "&#9733; Juegos de Terror Retro desde la Cripta &#9733;",
+            marquee:        "&#9760; NUEVO JUEGO EN DESARROLLO &mdash; MANTENTE AL TANTO &#9760; &nbsp;&nbsp;&nbsp; 🎮 INSPIRADO EN N64 &middot; PS1 &middot; PS2 &middot; GAMECUBE &middot; GAME BOY 🎮 &nbsp;&nbsp;&nbsp; &#9760; VE EL &Uacute;LTIMO DEVLOG ABAJO &#9760; &nbsp;&nbsp;&nbsp; 💀 &Uacute;NETE AL DISCORD &mdash; LINK EN EL SIDEBAR 💀 &nbsp;&nbsp;&nbsp; 🕹 HECHO CON GODOT ENGINE 🕹 &nbsp;&nbsp;&nbsp;",
+            nav_home:       "🏠 Inicio",
+            nav_devlog:     "📝 Devlog",
+            nav_games:      "🎮 Juegos",
+            nav_videos:     "📺 Videos",
+            nav_about:      "💀 Acerca",
+            nav_links:      "🔗 Links",
+            nav_merch:      "👕 Merch",
+            section_devlog: "&Uacute;ltimo Devlog",
+            new_tag:        "NUEVO",
+            read_more:      "LEER M&Aacute;S &raquo;",
+            view_all_posts: "VER TODAS LAS ENTRADAS &raquo;",
+            section_games:  "Mis Juegos",
+            view_all_games: "VER TODOS LOS JUEGOS &raquo;",
+            section_videos: "&Uacute;ltimos Videos",
+            yt_label:       "&#9654; &Uacute;LTIMO YOUTUBE",
+            tt_label:       "&#9834; &Uacute;LTIMO TIKTOK",
+            view_all_videos:"VER TODOS LOS VIDEOS &raquo;",
+            section_merch:  "Merch",
+            soon_tag:       "PRONTO",
+            merch_soon:     "&#9760; MERCH PR&Oacute;XIMAMENTE &#9760;",
+            merch_sub:      "Camisetas &middot; Calcoman&iacute;as &middot; Impresiones",
+            sidebar_status: "👾 Estado Dev",
+            working_on:     "Trabajando en:",
+            mood_label:     "Humor:",
+            mood_val:       "☕ Con cafe&iacute;na",
+            progress_label: "Progreso:",
+            progress_val:   "IA del Jefe Final",
+            sidebar_find:   "🔗 Encu&eacute;ntrame",
+            sidebar_pages:  "📂 P&aacute;ginas",
+            page_devlog:    "Devlog",
+            page_games:     "Todos los Juegos",
+            page_videos:    "Videos",
+            page_about:     "Acerca de M&iacute;",
+            page_links:     "Links",
+            page_merch:     "Merch (pronto)",
+            sidebar_souls:  "💀 Almas Devoradas",
+            sidebar_now:    "🎵 Reproduciendo",
+            sidebar_btn:    "🤝 Mi Bot&oacute;n",
+            sidebar_badge_text: "&iexcl;Libre de usar y enlazar!",
+            footer1: "&#9760; ZombieByte &copy; 2026 &mdash; Hecho con &#10084; y <a href='https://godotengine.org' target='_blank'>Godot Engine</a> &#9760;",
+            footer2: "Alojado en <a href='https://neocities.org' target='_blank'>NeoCities</a> &nbsp;&middot;&nbsp; Mejor a 1024&times;768"
+        }
+    };
+
+    function applyLang(lang) {
+        // Swap all translated elements
+        document.querySelectorAll("[data-i18n]").forEach(function(el) {
+            var key = el.getAttribute("data-i18n");
+            if (T[lang] && T[lang][key] !== undefined) {
+                el.innerHTML = T[lang][key];
+            }
+        });
+        // Highlight active buttons (there are two pairs: desktop + mobile)
+        ["en","es"].forEach(function(l) {
+            var d = document.getElementById("btn-" + l + "-d");
+            var m = document.getElementById("btn-" + l + "-m");
+            if (d) d.classList.toggle("active", l === lang);
+            if (m) m.classList.toggle("active", l === lang);
+        });
+        // Persist + set html lang attribute
+        try { localStorage.setItem("zb-lang", lang); } catch(e) {}
+        document.documentElement.lang = lang;
+    }
+
+    // Expose globally so onclick works
+    window.setLang = applyLang;
+
+    // Auto-detect on load
+    document.addEventListener("DOMContentLoaded", function() {
+        var saved   = null;
+        try { saved = localStorage.getItem("zb-lang"); } catch(e) {}
+        var browser = (navigator.language || navigator.userLanguage || "en").toLowerCase();
+        var lang    = saved || (browser.startsWith("es") ? "es" : "en");
+        applyLang(lang);
+    });
+}
+</script>
+
+</body>
+</html>
