@@ -108,7 +108,7 @@ async function main() {
         const slug     = prop(page, 'slug', 'text') || page.id;
         const titleEn  = prop(page, 'Title', 'title');
         const titleEs  = prop(page, 'title_es', 'text');
-        const date     = prop(page, 'date', 'date');
+        const date     = prop(page, 'Date', 'date');
         const excerptEn = prop(page, 'excerpt_en', 'text');
         const excerptEs = prop(page, 'excerpt_es', 'text');
         const thumbnail = prop(page, 'thumbnail', 'text');
