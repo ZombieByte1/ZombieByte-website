@@ -1,0 +1,53 @@
+name: Publish from Notion
+
+on:
+  schedule:
+    - cron: '0 * * * *'   # Runs every hour automatically
+  workflow_dispatch:        # Also lets you trigger it manually from the Actions tab
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      # 1. Check out the repo so we have access to notion_to_posts.py
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      # 2. Set up Python
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      # 3. Install the only dependency
+      - name: Install dependencies
+        run: pip install requests
+
+      # 4. Run the Notion → posts.json conversion script
+      - name: Fetch from Notion and build posts.json
+        env:
+          NOTION_TOKEN:       ${{ secrets.NOTION_TOKEN }}
+          NOTION_DATABASE_ID: ${{ secrets.NOTION_DATABASE_ID }}
+        run: python notion_to_posts.py
+
+      # 5. Upload posts.json to NeoCities via their REST API
+      - name: Upload posts.json to NeoCities
+        env:
+          NEOCITIES_TOKEN: ${{ secrets.NEOCITIES_TOKEN }}
+        run: |
+          HTTP_STATUS=$(curl -s -o /tmp/neocities_response.json -w "%{http_code}" \
+            -H "Authorization: Bearer $NEOCITIES_TOKEN" \
+            -F "posts.json=@posts.json" \
+            https://neocities.org/api/upload)
+
+          echo "NeoCities API response:"
+          cat /tmp/neocities_response.json
+
+          if [ "$HTTP_STATUS" -ne 200 ]; then
+            echo "❌ Upload failed with HTTP $HTTP_STATUS"
+            exit 1
+          fi
+
+          echo "✅ posts.json uploaded successfully (HTTP $HTTP_STATUS)"
