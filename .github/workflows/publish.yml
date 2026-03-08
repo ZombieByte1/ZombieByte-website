@@ -2,7 +2,7 @@ name: Publish from Notion
 
 on:
   schedule:
-    - cron: '0 * * * *'   # Runs every hour automatically
+    '0 10 * * 0'   # Runs every Sunday at 10:00 AM UTC
   workflow_dispatch:        # Also lets you trigger it manually from the Actions tab
 
 jobs:
