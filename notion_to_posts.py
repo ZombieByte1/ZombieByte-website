@@ -13,6 +13,19 @@ HEADERS = {
     "Content-Type": "application/json",
 }
 
+# ── Image config ──────────────────────────────────────────────────────────────
+IMAGES_BASE_PATH  = "/assets/images/"
+DEFAULT_THUMBNAIL = IMAGES_BASE_PATH + "default_thumbnail.jpg"
+
+def resolve_thumbnail(filename):
+    """Turn a bare filename into a full path, falling back to default."""
+    if not filename or filename == "placeholder_thumbnail.png":
+        return DEFAULT_THUMBNAIL
+    # If it's already a full URL or absolute path, leave it untouched
+    if filename.startswith("http") or filename.startswith("/"):
+        return filename
+    return IMAGES_BASE_PATH + filename
+
 MONTHS_ES = {
     "January": "enero", "February": "febrero", "March": "marzo",
     "April": "abril",   "May": "mayo",          "June": "junio",
@@ -247,7 +260,7 @@ def main():
         title_es   = plain(props.get("title_es",   {}).get("rich_text", [])) or title_en
         excerpt_en = plain(props.get("excerpt_en", {}).get("rich_text", [])) or ""
         excerpt_es = plain(props.get("excerpt_es", {}).get("rich_text", [])) or excerpt_en
-        thumbnail  = plain(props.get("thumbnail",  {}).get("rich_text", [])) or "placeholder_thumbnail.png"
+        thumbnail  = resolve_thumbnail(plain(props.get("thumbnail", {}).get("rich_text", [])))
         tags       = [t["name"] for t in props.get("tags", {}).get("multi_select", [])]
 
         # ── Page body — fetch blocks ──────────────────────────────────────
