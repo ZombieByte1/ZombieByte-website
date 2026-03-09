@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZombieByte | Devlog</title>
+    <link rel="icon" href="placeholder_zombiebyte_favicon_skull.ico">
+    <style>
+        /* ── Post page specific styles ── */
+
+        /* Hero thumbnail banner */
+        #post-hero {
+            width: 100%;
+            max-height: 280px;
+            object-fit: cover;
+            display: block;
+            border: 3px solid #8a2be2;
+            border-bottom: none;
+            image-rendering: pixelated;
+            margin-bottom: 0;
+        }
+
+        /* Post header block (title, date, tags) */
+        #post-header {
+            background: #0d001a;
+            border: 3px solid #8a2be2;
+            border-top: none;
+            padding: 14px 18px 12px;
+            margin-bottom: 18px;
+        }
+
+        #post-title {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 11px;
+            color: #cc44ff;
+            text-shadow: 0 0 10px #8a2be2;
+            margin: 0 0 10px 0;
+            line-height: 1.8;
+        }
+
+        #post-meta {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 10px;
+        }
+
+        #post-date {
+            font-family: 'VT323', monospace;
+            font-size: 16px;
+            color: #664488;
+        }
+
+        #post-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+
+        .post-tag {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 6px;
+            background: #1a003a;
+            border: 1px solid #3a0060;
+            color: #664488;
+            padding: 3px 7px;
+        }
+
+        /* Post body content */
+        #post-body {
+            background: #0d001a;
+            border: 2px solid #3a0060;
+            padding: 20px 22px;
+            margin-bottom: 18px;
+            line-height: 1.9;
+        }
+
+        #post-body p {
+            font-family: 'VT323', monospace;
+            font-size: 18px;
+            color: #c0a8d8;
+            margin: 0 0 12px 0;
+        }
+
+        #post-body h3 {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 9px;
+            color: #cc44ff;
+            margin: 18px 0 10px;
+            line-height: 1.8;
+        }
+
+        #post-body img {
+            width: 100%;
+            border: 2px solid #8a2be2;
+            image-rendering: pixelated;
+            margin: 12px 0 4px;
+            display: block;
+        }
+
+        #post-body ul,
+        #post-body ol {
+            font-family: 'VT323', monospace;
+            font-size: 18px;
+            color: #c0a8d8;
+            padding-left: 20px;
+            margin: 0 0 12px 0;
+        }
+
+        #post-body blockquote {
+            border-left: 3px solid #8a2be2;
+            padding: 6px 14px;
+            background: #1a0030;
+            color: #aaa;
+            font-style: italic;
+            margin: 12px 0;
+            font-family: 'VT323', monospace;
+            font-size: 18px;
+        }
+
+        #post-body pre {
+            background: #0a0018;
+            border: 1px solid #8a2be2;
+            padding: 12px;
+            font-size: 11px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            color: #00ff00;
+            margin: 12px 0;
+        }
+
+        #post-body hr {
+            border: none;
+            border-top: 2px solid #8a2be2;
+            margin: 18px 0;
+        }
+
+        /* Prev / Next navigation */
+        #post-nav {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            margin-bottom: 18px;
+        }
+
+        .post-nav-btn {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 7px;
+            background: #0f0025;
+            border: 2px solid #3a0060;
+            color: #8a2be2;
+            padding: 8px 12px;
+            text-decoration: none;
+            display: inline-block;
+            line-height: 1.7;
+            transition: background 0.15s, border-color 0.15s, color 0.15s;
+            max-width: 46%;
+            word-break: break-word;
+        }
+
+        .post-nav-btn:hover {
+            background: #8a2be2;
+            border-color: #cc44ff;
+            color: #fff;
+        }
+
+        .post-nav-btn.disabled {
+            opacity: 0.3;
+            pointer-events: none;
+        }
+
+        .post-nav-label {
+            display: block;
+            color: #444;
+            font-size: 6px;
+            margin-bottom: 5px;
+        }
+
+        /* Back to devlog link */
+        #back-to-devlog {
+            display: inline-block;
+            font-family: 'Press Start 2P', monospace;
+            font-size: 7px;
+            color: #8a2be2;
+            text-decoration: none;
+            border: 2px solid #3a0060;
+            padding: 7px 12px;
+            margin-bottom: 18px;
+            background: #0f0025;
+        }
+
+        #back-to-devlog:hover {
+            background: #8a2be2;
+            color: #fff;
+            border-color: #cc44ff;
+        }
+
+        /* Not found / error state */
+        #post-error {
+            display: none;
+            background: #1a0010;
+            border: 2px solid #cc0000;
+            padding: 20px;
+            text-align: center;
+        }
+
+        #post-error p {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 8px;
+            color: #cc0000;
+            line-height: 2;
+        }
+
+        /* Loading state */
+        #post-loading {
+            font-family: 'VT323', monospace;
+            font-size: 20px;
+            color: #664488;
+            padding: 20px 0;
+        }
+
+        /* Section heading matches other pages */
+        .post-section-heading {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 9px;
+            color: #e0d0ff;
+            border-bottom: 2px solid #8a2be2;
+            padding-bottom: 8px;
+            margin: 0 0 14px 0;
+        }
+    </style>
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<span id="top"></span>
+<input type="checkbox" id="nav-toggle">
+<label for="nav-toggle" id="nav-overlay"></label>
+
+<div id="wrapper">
+
+    <div id="header-placeholder"></div>
+
+    <!-- MAIN LAYOUT -->
+    <div id="main-layout">
+        <div id="sidebar-placeholder"></div>
+
+        <!-- ✏️ POST CONTENT -->
+        <main id="content">
+
+            <a href="devlog.html" id="back-to-devlog">&#9668; <span data-i18n="back_to_devlog">Back to Devlog</span></a>
+
+            <!-- Loading state -->
+            <p id="post-loading" data-i18n="loading">&#9760; Loading...</p>
+
+            <!-- Error state -->
+            <div id="post-error">
+                <p>&#9760; POST NOT FOUND &#9760;</p>
+                <p style="font-size:7px;color:#884466;margin-top:10px;">This devlog entry doesn't exist or was removed.</p>
+                <a href="devlog.html" style="font-family:'Press Start 2P',monospace;font-size:7px;color:#8a2be2;text-decoration:none;border:1px solid #3a0060;padding:6px 10px;display:inline-block;margin-top:14px;">&#9668; BACK TO DEVLOG</a>
+            </div>
+
+            <!-- Post will be injected here -->
+            <div id="post-container" style="display:none;">
+                <img id="post-hero" src="" alt="" onerror="this.src='/assets/images/default_thumbnail.jpg'">
+                <div id="post-header">
+                    <h1 id="post-title"></h1>
+                    <div id="post-meta">
+                        <span id="post-date"></span>
+                        <div id="post-tags"></div>
+                    </div>
+                </div>
+                <div id="post-body"></div>
+                <div id="post-nav">
+                    <a id="nav-prev" href="#" class="post-nav-btn disabled">
+                        <span class="post-nav-label" data-i18n="nav_prev">&#9668; PREVIOUS</span>
+                        <span id="nav-prev-title"></span>
+                    </a>
+                    <a id="nav-next" href="#" class="post-nav-btn disabled" style="text-align:right;">
+                        <span class="post-nav-label" data-i18n="nav_next">NEXT &#9658;</span>
+                        <span id="nav-next-title"></span>
+                    </a>
+                </div>
+            </div>
+
+        </main>
+        <!-- END CONTENT -->
+
+    </div><!-- /#main-layout -->
+
+    <div id="footer-placeholder"></div>
+
+</div><!-- /#wrapper -->
+
+<a href="#top" id="back-to-top" title="Back to top">&#9650;</a>
+
+<!-- Component Loader -->
+<script>
+function loadComponent(id, file, callback) {
+    fetch(file)
+        .then(function(r) { return r.text(); })
+        .then(function(html) {
+            document.getElementById(id).innerHTML = html;
+            if (callback) callback();
+        });
+}
+
+loadComponent('header-placeholder',  'components/header.html');
+loadComponent('sidebar-placeholder', 'components/sidebar.html');
+loadComponent('footer-placeholder',  'components/footer.html', function() {
+    initI18n();
+});
+</script>
+
+<!-- i18n -->
+<script>
+function initI18n() {
+    var T = {
+        en: {
+            subtitle:       "&#9733; Retro Horror Games from the Crypt &#9733;",
+            marquee:        "&#9760; NEW GAME IN DEVELOPMENT &mdash; STAY TUNED &#9760; &nbsp;&nbsp;&nbsp; 🎮 INSPIRED BY N64 &middot; PS1 &middot; PS2 &middot; GAMECUBE &middot; GAME BOY 🎮 &nbsp;&nbsp;&nbsp; &#9760; CHECK OUT THE LATEST DEVLOG BELOW &#9760; &nbsp;&nbsp;&nbsp; 💀 JOIN THE DISCORD &mdash; LINK IN SIDEBAR 💀 &nbsp;&nbsp;&nbsp; 🕹 MADE WITH GODOT ENGINE 🕹 &nbsp;&nbsp;&nbsp;",
+            nav_home:       "🏠 Home",
+            nav_devlog:     "📝 Devlog",
+            nav_games:      "🎮 Games",
+            nav_videos:     "📺 Videos",
+            nav_about:      "💀 About",
+            nav_links:      "🔗 Links",
+            nav_merch:      "👕 Merch",
+            section_devlog: "Latest Devlog",
+            new_tag:        "NEW",
+            read_more:      "READ MORE &raquo;",
+            view_all_posts: "VIEW ALL POSTS &raquo;",
+            section_games:  "My Games",
+            view_all_games: "VIEW ALL GAMES &raquo;",
+            section_videos: "Latest Videos",
+            yt_label:       "&#9654; LATEST YOUTUBE",
+            tt_label:       "&#9834; LATEST TIKTOK",
+            view_all_videos:"VIEW ALL VIDEOS &raquo;",
+            section_merch:  "Merch",
+            soon_tag:       "SOON",
+            merch_soon:     "&#9760; MERCH COMING SOON &#9760;",
+            merch_sub:      "T-shirts &middot; Stickers &middot; Prints",
+            sidebar_status: "👾 Dev Status",
+            working_on:     "Working on:",
+            mood_label:     "Mood:",
+            mood_val:       "☕ Caffeinated",
+            progress_label: "Progress:",
+            progress_val:   "Boss Fight AI",
+            sidebar_find:   "🔗 Find Me",
+            sidebar_pages:  "📂 Pages",
+            page_devlog:    "Devlog",
+            page_games:     "All Games",
+            page_videos:    "Videos",
+            page_about:     "About Me",
+            page_links:     "Links",
+            page_merch:     "Merch (soon)",
+            sidebar_souls:  "💀 Souls Devoured",
+            sidebar_now:    "🎵 Now Playing",
+            sidebar_btn:    "🤝 My Button",
+            sidebar_badge_text: "Free to use &amp; link!",
+            loading:        "&#9760; Loading...",
+            back_to_devlog: "Back to Devlog",
+            nav_prev:       "&#9668; PREVIOUS",
+            nav_next:       "NEXT &#9658;",
+            footer1: "&#9760; ZombieByte &copy; 2026 &mdash; Made with &#10084; and <a href='https://godotengine.org' target='_blank'>Godot Engine</a> &#9760;",
+            footer2: "Hosted on <a href='https://neocities.org' target='_blank'>NeoCities</a> &nbsp;&middot;&nbsp; Best viewed at 1024&times;768"
+        },
+        es: {
+            subtitle:       "&#9733; Juegos de Terror Retro desde la Cripta &#9733;",
+            marquee:        "&#9760; NUEVO JUEGO EN DESARROLLO &mdash; MANTENTE AL TANTO &#9760; &nbsp;&nbsp;&nbsp; 🎮 INSPIRADO EN N64 &middot; PS1 &middot; PS2 &middot; GAMECUBE &middot; GAME BOY 🎮 &nbsp;&nbsp;&nbsp; &#9760; VE EL &Uacute;LTIMO DEVLOG ABAJO &#9760; &nbsp;&nbsp;&nbsp; 💀 &Uacute;NETE AL DISCORD &mdash; LINK EN EL SIDEBAR 💀 &nbsp;&nbsp;&nbsp; 🕹 HECHO CON GODOT ENGINE 🕹 &nbsp;&nbsp;&nbsp;",
+            nav_home:       "🏠 Inicio",
+            nav_devlog:     "📝 Devlog",
+            nav_games:      "🎮 Juegos",
+            nav_videos:     "📺 Videos",
+            nav_about:      "💀 Acerca",
+            nav_links:      "🔗 Links",
+            nav_merch:      "👕 Merch",
+            section_devlog: "&Uacute;ltimo Devlog",
+            new_tag:        "NUEVO",
+            read_more:      "LEER M&Aacute;S &raquo;",
+            view_all_posts: "VER TODAS LAS ENTRADAS &raquo;",
+            section_games:  "Mis Juegos",
+            view_all_games: "VER TODOS LOS JUEGOS &raquo;",
+            section_videos: "&Uacute;ltimos Videos",
+            yt_label:       "&#9654; &Uacute;LTIMO YOUTUBE",
+            tt_label:       "&#9834; &Uacute;LTIMO TIKTOK",
+            view_all_videos:"VER TODOS LOS VIDEOS &raquo;",
+            section_merch:  "Merch",
+            soon_tag:       "PRONTO",
+            merch_soon:     "&#9760; MERCH PR&Oacute;XIMAMENTE &#9760;",
+            merch_sub:      "Camisetas &middot; Calcoman&iacute;as &middot; Impresiones",
+            sidebar_status: "👾 Estado Dev",
+            working_on:     "Trabajando en:",
+            mood_label:     "Humor:",
+            mood_val:       "☕ Con cafe&iacute;na",
+            progress_label: "Progreso:",
+            progress_val:   "IA del Jefe Final",
+            sidebar_find:   "🔗 Encu&eacute;ntrame",
+            sidebar_pages:  "📂 P&aacute;ginas",
+            page_devlog:    "Devlog",
+            page_games:     "Todos los Juegos",
+            page_videos:    "Videos",
+            page_about:     "Acerca de M&iacute;",
+            page_links:     "Links",
+            page_merch:     "Merch (pronto)",
+            sidebar_souls:  "💀 Almas Devoradas",
+            sidebar_now:    "🎵 Reproduciendo",
+            sidebar_btn:    "🤝 Mi Bot&oacute;n",
+            sidebar_badge_text: "&iexcl;Libre de usar y enlazar!",
+            loading:        "&#9760; Cargando...",
+            back_to_devlog: "Volver al Devlog",
+            nav_prev:       "&#9668; ANTERIOR",
+            nav_next:       "SIGUIENTE &#9658;",
+            footer1: "&#9760; ZombieByte &copy; 2026 &mdash; Hecho con &#10084; y <a href='https://godotengine.org' target='_blank'>Godot Engine</a> &#9760;",
+            footer2: "Alojado en <a href='https://neocities.org' target='_blank'>NeoCities</a> &nbsp;&middot;&nbsp; Mejor a 1024&times;768"
+        }
+    };
+
+    function applyLang(lang) {
+        document.querySelectorAll("[data-i18n]").forEach(function(el) {
+            var key = el.getAttribute("data-i18n");
+            if (T[lang] && T[lang][key] !== undefined) {
+                el.innerHTML = T[lang][key];
+            }
+        });
+        ["en","es"].forEach(function(l) {
+            var d = document.getElementById("btn-" + l + "-d");
+            var m = document.getElementById("btn-" + l + "-m");
+            if (d) d.classList.toggle("active", l === lang);
+            if (m) m.classList.toggle("active", l === lang);
+        });
+        try { localStorage.setItem("zb-lang", lang); } catch(e) {}
+        document.documentElement.lang = lang;
+
+        // Re-render post content in new language if post already loaded
+        if (window._currentPost) {
+            renderPost(window._currentPost, window._allPosts, lang);
+        }
+    }
+
+    window.setLang = applyLang;
+
+    document.addEventListener("DOMContentLoaded", function() {
+        var saved   = null;
+        try { saved = localStorage.getItem("zb-lang"); } catch(e) {}
+        var browser = (navigator.language || navigator.userLanguage || "en").toLowerCase();
+        var lang    = saved || (browser.startsWith("es") ? "es" : "en");
+        applyLang(lang);
+    });
+}
+</script>
+
+<!-- Post loader -->
+<script>
+(function () {
+
+    function getLang() {
+        return document.documentElement.lang === 'es' ? 'es' : 'en';
+    }
+
+    function t(post, field) {
+        var lang = getLang();
+        if (post[field + '_' + lang] !== undefined) return post[field + '_' + lang];
+        if (post[field + '_en']      !== undefined) return post[field + '_en'];
+        if (post[field]              !== undefined) return post[field];
+        return '';
+    }
+
+    function renderPost(post, allPosts, lang) {
+        lang = lang || getLang();
+
+        // Page title
+        document.title = 'ZombieByte | ' + t(post, 'title');
+
+        // Hero image
+        var hero = document.getElementById('post-hero');
+        hero.src = post.thumbnail || '/assets/images/default_thumbnail.jpg';
+        hero.alt = t(post, 'title');
+
+        // Title
+        document.getElementById('post-title').textContent = t(post, 'title');
+
+        // Date
+        document.getElementById('post-date').textContent =
+            lang === 'es' ? (post.date_es || post.date_en || post.date)
+                           : (post.date_en || post.date);
+
+        // Tags
+        var tagsEl = document.getElementById('post-tags');
+        tagsEl.innerHTML = (post.tags || []).map(function(tag) {
+            return '<span class="post-tag">' + tag + '</span>';
+        }).join('');
+
+        // Body content
+        var contentArr = post['content_' + lang] || post.content_en || [];
+        var bodyHtml = contentArr.map(function(item) {
+            // Raw HTML items (start with <)
+            if (typeof item === 'string' && item.trim().charAt(0) === '<') {
+                return item;
+            }
+            return '<p>' + item + '</p>';
+        }).join('');
+        document.getElementById('post-body').innerHTML = bodyHtml || '<p style="color:#664488;font-family:VT323,monospace;font-size:18px;">No content yet.</p>';
+
+        // Prev / Next navigation
+        var idx = allPosts.findIndex(function(p) { return p.id === post.id; });
+        // allPosts is newest-first, so "previous" = older = higher index
+        var prevPost = allPosts[idx + 1] || null;
+        var nextPost = allPosts[idx - 1] || null;
+
+        var prevBtn = document.getElementById('nav-prev');
+        var nextBtn = document.getElementById('nav-next');
+
+        if (prevPost) {
+            prevBtn.href = 'post.html?id=' + prevPost.id;
+            prevBtn.classList.remove('disabled');
+            document.getElementById('nav-prev-title').textContent = t(prevPost, 'title');
+        } else {
+            prevBtn.classList.add('disabled');
+            document.getElementById('nav-prev-title').textContent = '';
+        }
+
+        if (nextPost) {
+            nextBtn.href = 'post.html?id=' + nextPost.id;
+            nextBtn.classList.remove('disabled');
+            document.getElementById('nav-next-title').textContent = t(nextPost, 'title');
+        } else {
+            nextBtn.classList.add('disabled');
+            document.getElementById('nav-next-title').textContent = '';
+        }
+
+        // Show the post, hide loading
+        document.getElementById('post-loading').style.display  = 'none';
+        document.getElementById('post-container').style.display = 'block';
+    }
+
+    // Expose for language switcher
+    window.renderPost = renderPost;
+
+    document.addEventListener('DOMContentLoaded', function () {
+        // Get post ID from URL ?id=slug
+        var params  = new URLSearchParams(window.location.search);
+        var postId  = params.get('id');
+
+        if (!postId) {
+            document.getElementById('post-loading').style.display = 'none';
+            document.getElementById('post-error').style.display   = 'block';
+            return;
+        }
+
+        fetch('posts.json?v=' + Date.now())
+            .then(function(r) { return r.json(); })
+            .then(function(data) {
+                var allPosts = (data.posts || []).sort(function(a, b) {
+                    return new Date(b.date) - new Date(a.date);
+                });
+                var post = allPosts.find(function(p) { return p.id === postId; });
+
+                if (!post) {
+                    document.getElementById('post-loading').style.display = 'none';
+                    document.getElementById('post-error').style.display   = 'block';
+                    return;
+                }
+
+                // Store globally so language switcher can re-render
+                window._currentPost = post;
+                window._allPosts    = allPosts;
+
+                renderPost(post, allPosts);
+            })
+            .catch(function() {
+                document.getElementById('post-loading').style.display = 'none';
+                document.getElementById('post-error').style.display   = 'block';
+            });
+    });
+
+}());
+</script>
+
+</body>
+</html>

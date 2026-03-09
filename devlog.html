@@ -262,9 +262,8 @@ function initI18n() {
                     '<span class="blog-post-date">' + (p.date_en || p.date || '') + '</span>' +
                 '</div>' +
                 '<div class="blog-post-body">' +
-                    (p.thumbnail
-                        ? '<img class="blog-post-img" src="' + p.thumbnail + '" alt="' + t(p, 'title') + '">'
-                        : '') +
+                    '<img class="blog-post-img" src="' + (p.thumbnail || '/assets/images/default_thumbnail.jpg') + '" alt="' + t(p, 'title') + '" onerror="this.src=\'/assets/images/default_thumbnail.jpg\'">' +
+
                     '<div class="blog-post-text">' +
                         '<p>' + t(p, 'excerpt') + '</p>' +
                         (tags ? '<div class="post-tags">' + tags + '</div>' : '') +

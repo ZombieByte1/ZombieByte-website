@@ -28,8 +28,16 @@
 
         <!-- ✏️ ONLY THIS CHANGES PER PAGE -->
         <main id="content">
+             <h2 class="section-heading"><span data-i18n="section_welcome">Welcome</span> </h2>
+            <p class="welcome-msg" data-i18n="welcome_msg">
+                &#9760; Welcome to the official website of ZombieByte, a one-person indie game studio crafting retro horror games with a modern twist. &#9760;<br><br>
+                Dive into our devlog for behind-the-scenes looks at our projects, explore our games page to play our latest releases, and check out our videos for trailers, gameplay, and more. &#9760;<br><br>
+                Join our Discord community to chat with us and other fans, and follow us on social media for real-time updates. &#9760;<br><br>
+                Thanks for stopping by the crypt - we hope you enjoy the spooky ride! &#9760;
 
            
+        </p>
+        <hr class="pixel-divider">
             <h2 class="section-heading"><span data-i18n="section_devlog">Latest Devlog</span> <span class="new-tag" data-i18n="new_tag">NEW</span></h2>
 
             <div id="latest-posts-container">
@@ -79,7 +87,7 @@
                 </p>
             </div>
 
-
+            
         </main>
         <!-- END CONTENT -->
 
@@ -127,6 +135,8 @@ function initI18n() {
             nav_about:      "💀 About",
             nav_links:      "🔗 Links",
             nav_merch:      "👕 Merch",
+            section_welcome: "Welcome",
+            welcome_msg:    "&#9760; Welcome to the official website of ZombieByte, I'm a Game Developer who loves crafting all kinds of experiences, especially retro looking games and horror! <br><br> The site is still under construction, but you can start exploring some of my games. <br><br> Thanks for stopping by! &#9760;",
             section_devlog: "Latest Devlog",
             new_tag:        "NEW",
             read_more:      "READ MORE &raquo;",
@@ -160,7 +170,6 @@ function initI18n() {
             sidebar_btn:    "🤝 My Button",
             sidebar_badge_text: "Free to use &amp; link!",
             loading: "&#9760; Loading...",
-            loading: "&#9760; Cargando...",
             footer1: "&#9760; ZombieByte &copy; 2026 &mdash; Made with &#10084; and <a href='https://godotengine.org' target='_blank'>Godot Engine</a> &#9760;",
             footer2: "Hosted on <a href='https://neocities.org' target='_blank'>NeoCities</a> &nbsp;&middot;&nbsp; Best viewed at 1024&times;768"
         },
@@ -174,6 +183,8 @@ function initI18n() {
             nav_about:      "💀 Acerca",
             nav_links:      "🔗 Links",
             nav_merch:      "👕 Merch",
+            section_welcome: "Bienvenido",
+            welcome_msg:    "&#9760; Bienvenido al sitio web oficial de ZombieByte, soy un desarrollador de juegos que ama crear todos los tipos de experiencias, especialmente juegos con aspecto retro y terror! <br><br> El sitio aún está en construcción, pero puedes comenzar a explorar algunos de mis juegos. <br><br> ¡Gracias por visitarnos! &#9760;",
             section_devlog: "&Uacute;ltimo Devlog",
             new_tag:        "NUEVO",
             read_more:      "LEER M&Aacute;S &raquo;",
@@ -206,6 +217,7 @@ function initI18n() {
             sidebar_now:    "🎵 Reproduciendo",
             sidebar_btn:    "🤝 Mi Bot&oacute;n",
             sidebar_badge_text: "&iexcl;Libre de usar y enlazar!",
+            loading: "&#9760; Cargando...",
             footer1: "&#9760; ZombieByte &copy; 2026 &mdash; Hecho con &#10084; y <a href='https://godotengine.org' target='_blank'>Godot Engine</a> &#9760;",
             footer2: "Alojado en <a href='https://neocities.org' target='_blank'>NeoCities</a> &nbsp;&middot;&nbsp; Mejor a 1024&times;768"
         }
@@ -229,20 +241,88 @@ function initI18n() {
         // Persist + set html lang attribute
         try { localStorage.setItem("zb-lang", lang); } catch(e) {}
         document.documentElement.lang = lang;
+        if (window.onLangChange) window.onLangChange(lang);
     }
 
     // Expose globally so onclick works
     window.setLang = applyLang;
 
     // Auto-detect on load
-    document.addEventListener("DOMContentLoaded", function() {
-        var saved   = null;
-        try { saved = localStorage.getItem("zb-lang"); } catch(e) {}
-        var browser = (navigator.language || navigator.userLanguage || "en").toLowerCase();
-        var lang    = saved || (browser.startsWith("es") ? "es" : "en");
-        applyLang(lang);
-    });
+   var saved   = null;
+    try { saved = localStorage.getItem("zb-lang"); } catch(e) {}
+    var browser = (navigator.language || navigator.userLanguage || "en").toLowerCase();
+    var lang    = saved || (browser.startsWith("es") ? "es" : "en");
+    applyLang(lang);
+    console.log("Language set to: " + lang);
 }
+</script>
+
+
+
+<!-- Latest posts loader -->
+<script>
+(function () {
+    var MAX_POSTS = 3;
+
+    function getLang() {
+        return document.documentElement.lang === 'es' ? 'es' : 'en';
+    }
+
+    function t(post, field) {
+        var lang = getLang();
+        if (post[field + '_' + lang] !== undefined) return post[field + '_' + lang];
+        if (post[field + '_en']      !== undefined) return post[field + '_en'];
+        return '';
+    }
+
+    function renderCards(posts) {
+        var container = document.getElementById('latest-posts-container');
+        if (!posts.length) {
+            container.innerHTML = '<p class="loading-msg">&#9760; No posts yet.</p>';
+            return;
+        }
+        container.innerHTML = posts.slice(0, MAX_POSTS).map(function(p) {
+            return (
+                '<article class="blog-post">' +
+                    '<div class="blog-post-header">' +
+                        '<span class="blog-post-title">' + t(p, 'title') + '</span>' +
+                        '<span class="blog-post-date">' + (p.date_en || p.date || '') + '</span>' +
+                    '</div>' +
+                    '<div class="blog-post-body">' +
+                        '<img class="blog-post-img" src="' + (p.thumbnail || '/assets/images/default_thumbnail.jpg') + '" alt="' + t(p, 'title') + '" onerror="this.src=\'/assets/images/default_thumbnail.jpg\'">' +
+                        '<div class="blog-post-text">' +
+                            '<p>' + t(p, 'excerpt') + '</p>' +
+                            '<a href="post.html?id=' + p.id + '" class="read-more" data-i18n="read_more">READ MORE &raquo;</a>' +
+                        '</div>' +
+                    '</div>' +
+                '</article>'
+            );
+        }).join('');
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        fetch('posts.json?v=' + Date.now())
+            .then(function(r) { return r.json(); })
+            .then(function(data) {
+                var posts = (data.posts || []).sort(function(a, b) {
+                    return new Date(b.date) - new Date(a.date);
+                });
+                window._homePosts = posts;
+                renderCards(posts);
+            })
+            .catch(function() {
+                document.getElementById('latest-posts-container').innerHTML =
+                    '<p class="loading-msg">&#9760; Could not load posts.</p>';
+            });
+    });
+
+    // Re-render when language switches
+    var prev = window.onLangChange;
+    window.onLangChange = function(lang) {
+        if (prev) prev(lang);
+        if (window._homePosts) renderCards(window._homePosts);
+    };
+}());
 </script>
 
 </body>

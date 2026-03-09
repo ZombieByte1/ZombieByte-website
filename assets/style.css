@@ -4,7 +4,7 @@
 
         body {
             background-color: #080010;
-            background-image: url('placeholder_tiled_dark_stone_dungeon_background.png');
+            background-image: url('/assets/images/eyes.gif');
             background-repeat: repeat;
             color: #e0d0ff;
             font-family: 'VT323', monospace;
@@ -35,7 +35,7 @@
 
         /* ===== WRAPPER ===== */
         #wrapper {
-            width: 980px;
+            width: 1280px;
             margin: 0 auto;
             border-left: 3px solid #8a2be2;
             border-right: 3px solid #8a2be2;
@@ -94,10 +94,10 @@
         .lang-sep { color: #3a0060; font-size: 12px; }
 
         /* ===== MAIN LAYOUT ===== */
-        #main-layout { display:flex; align-items:flex-start; }
+        #main-layout { display:flex; align-items:flex-start; flex-direction: row-reverse;}
 
         /* ===== SIDEBAR ===== */
-        #sidebar { width:205px; min-width:205px; border-right:2px solid #8a2be2; padding:12px 8px; background:#08001a; }
+        #sidebar { width:300px; min-width:300px; border-right:2px solid #8a2be2; padding:12px 8px; background:#08001a; }
         .sidebar-mascot { text-align:center; padding:6px 4px 10px; }
         .sidebar-mascot img { width:130px; image-rendering:pixelated; }
         .sidebar-box { border:2px solid #8a2be2; margin-bottom:12px; background:#0f0025; }
@@ -284,7 +284,7 @@
             #nav-overlay { display: none !important; }
 
             /* Restore side-by-side layout with a narrower sidebar */
-            #main-layout            { flex-direction: row !important; }
+            #main-layout            { flex-direction: row-reverse !important; }
             #content                { order: 0; padding: 10px; }
             #sidebar {
                 order:          0;
@@ -318,3 +318,8 @@
             .videos-grid            { grid-template-columns: 1fr; }
             .video-embed-box iframe { height: 170px; }
         }
+
+
+
+
+body {cursor: url(http://www.rw-designer.com/cursor-extern.php?id=243675, auto);}
