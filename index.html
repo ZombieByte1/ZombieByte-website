@@ -21,22 +21,94 @@
 <div id="wrapper">
 
     <div id="header-placeholder"></div>
-
+    
     <!-- MAIN LAYOUT -->
     <div id="main-layout">
         <div id="sidebar-placeholder"></div>
-
+        
         <!-- ✏️ ONLY THIS CHANGES PER PAGE -->
         <main id="content">
-             <h2 class="section-heading"><span data-i18n="section_welcome">Welcome</span> </h2>
+            <h2 class="section-heading"><span data-i18n="section_welcome">Welcome</span> </h2>
             <p class="welcome-msg" data-i18n="welcome_msg">
                 &#9760; Welcome to the official website of ZombieByte, a one-person indie game studio crafting retro horror games with a modern twist. &#9760;<br><br>
                 Dive into our devlog for behind-the-scenes looks at our projects, explore our games page to play our latest releases, and check out our videos for trailers, gameplay, and more. &#9760;<br><br>
                 Join our Discord community to chat with us and other fans, and follow us on social media for real-time updates. &#9760;<br><br>
                 Thanks for stopping by the crypt - we hope you enjoy the spooky ride! &#9760;
+                
+                
+            </p>
+            <hr class="pixel-divider">
 
-           
-        </p>
+         <!-- MY GAMES  -->
+            <h2 class="section-heading"><span data-i18n="section_games">My Games</span></h2>
+            <div class="games-grid">
+
+                 <!-- ── GAME CARD — NOCTHERIA ── -->
+                <div class="game-card-full">
+                    <img class="game-cover"
+                         src="/assets/images/noctheria_promo.gif"
+                         alt="Guinda"
+                         onerror="this.src='/assets/images/default_thumbnail.jpg'">
+                    <div class="game-info">
+                        <p class="game-title">Noctheria</p>
+                        <span class="game-status in-dev" data-i18n="status_indev">IN DEV</span>
+                        <p class="game-desc" data-i18n="noctheria_desc">
+                            Noctheria is an Action-adventure mixed with Survival Horror inspired by the N64 era. Play as The Novice in a quest to save the Kingdom of Alabadusk, explore Temples, solve Puzzles and meet odd characters in a cursed dark fantasy world.
+                        </p>
+                        <div class="game-btns">
+                            <!-- <a href="https://store.steampowered.com/app/3776070/Noctheria/" target="_blank" class="game-btn itch">ITCH.IO</a> -->
+                            <!-- Add more buttons here if needed: -->
+                            <a href="https://store.steampowered.com/app/3776070/Noctheria/" target="_blank" class="game-btn steam"> WISHLIST ON STEAM</a>
+                            <!-- <a href="#" target="_blank" class="game-btn android"> ANDROID</a> -->
+                        </div>
+                    </div>
+                </div>
+                <!-- ── END GAME CARD ── -->
+
+                <!-- ── GAME CARD — TNOTI ── -->
+                <div class="game-card-full">
+                    <img class="game-cover"
+                         src="/assets/images/TNOTI.gif"
+                         alt="Game Title"
+                         onerror="this.src='/assets/images/default_thumbnail.jpg'">
+                    <div class="game-info">
+                        <p class="game-title">The Night of the Inquisitor</p>
+                        <span class="game-status released" data-i18n="status_released">RELEASED</span>
+                        <p class="game-desc">
+                            Play as Emilia, a young woman cursed by an ancient rosary, transported into the Realm of the Inquisitor, an oneiric dimension filled with the ghosts victims of the Inquisitor himself. Solve puzzles, free ghosts, and escape the Inquisitor!
+                        </p>
+                        <div class="game-btns">
+                            <a href="https://zombiebyte.itch.io/the-night-of-the-inquisitor" target="_blank" class="game-btn itch">🕹 ITCH.IO</a>
+                            <a href="https://store.steampowered.com/app/2417730/The_Night_Of_The_Inquisitor/" target="_blank" class="game-btn steam">🖥 STEAM</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- ── END GAME CARD ── -->
+                <!-- rogue yankii -->
+                 <div class="game-card-full">
+                    <img class="game-cover"
+                         src="/assets/images/rogue-yankii.gif"
+                         alt="Game Title"
+                         onerror="this.src='/assets/images/default_thumbnail.jpg'">
+                    <div class="game-info">
+                        <p class="game-title">Rogue Yankii</p>
+                        <span class="game-status released" data-i18n="status_released">RELEASED</span>
+                        <p class="game-desc">
+                            A gameboy Roguelike with procedurally generated dungeons where you play as a delinquent high school student fighting to rescue dogs.
+                        </p>
+                        <div class="game-btns">
+                            <a href="https://zombiebyte.itch.io/rogue-yankii" target="_blank" class="game-btn itch">ITCH.IO</a>
+                            <a href="game-rogue-yankii.html"  class="game-btn browser">PLAY IN BROWSER</a>
+                            <!-- <a href="#" target="_blank" class="game-btn steam">STEAM</a> -->
+                        </div>
+                    </div>
+                </div>
+
+
+               
+            </div>
+            <a href="games.html" class="view-all" data-i18n="view_all_games">VIEW ALL GAMES &raquo;</a>
+        <!-- DEVLOG SECTION (DYNAMICALLY LOADED BELOW) -->
         <hr class="pixel-divider">
             <h2 class="section-heading"><span data-i18n="section_devlog">Latest Devlog</span> <span class="new-tag" data-i18n="new_tag">NEW</span></h2>
 
@@ -46,36 +118,23 @@
             <a href="devlog.html" class="view-all" data-i18n="view_all_posts">VIEW ALL POSTS &raquo;</a>
             <hr class="pixel-divider">
 
-            <h2 class="section-heading"><span data-i18n="section_games">My Games</span></h2>
-            <div class="games-grid">
-                <a href="https://zombiebyte.itch.io/" target="_blank" class="game-card">
-                    <img src="placeholder_game_guinda_cover_art_nun_ps1_style.png" alt="Guinda">
-                    <span class="game-card-title" data-i18n="game1_title">Guinda<br>(In Dev)</span>
-                </a>
-                <a href="https://zombiebyte.itch.io/" target="_blank" class="game-card">
-                    <img src="placeholder_game2_cover_art_retro_horror.png" alt="Game 2">
-                    <span class="game-card-title" data-i18n="game2_title">Game 2<br>Title Here</span>
-                </a>
-                <a href="https://zombiebyte.itch.io/" target="_blank" class="game-card">
-                    <img src="placeholder_game3_cover_art_retro_horror.png" alt="Game 3">
-                    <span class="game-card-title" data-i18n="game3_title">Game 3<br>Title Here</span>
-                </a>
-            </div>
-            <a href="games.html" class="view-all" data-i18n="view_all_games">VIEW ALL GAMES &raquo;</a>
-            <hr class="pixel-divider">
+           
 
+
+            <!-- LATEST VIDEOS  -->
             <h2 class="section-heading"><span data-i18n="section_videos">Latest Videos</span></h2>
             <div class="videos-grid">
                 <div class="video-embed-box">
                     <p class="video-label" data-i18n="yt_label">&#9654; LATEST YOUTUBE</p>
-                    <iframe src="https://www.youtube.com/embed/VIDEO_ID_HERE" allowfullscreen title="YouTube"></iframe>
+                    <iframe src="https://www.youtube.com/embed/f7bTnqNZNYA" allowfullscreen title="YouTube"></iframe>
                 </div>
                 <div class="video-embed-box">
                     <p class="video-label" data-i18n="tt_label">&#9834; LATEST TIKTOK</p>
-                    <iframe src="https://www.tiktok.com/embed/v2/TIKTOK_VIDEO_ID_HERE" allowfullscreen title="TikTok"></iframe>
+                    <iframe src="https://www.tiktok.com/embed/v2/7564126659289320725" allowfullscreen title="TikTok"></iframe>
                 </div>
+                
             </div>
-            <a href="videos.html" class="view-all" data-i18n="view_all_videos">VIEW ALL VIDEOS &raquo;</a>
+            <!-- <a href="videos.html" class="view-all" data-i18n="view_all_videos">VIEW ALL VIDEOS &raquo;</a> -->
             <hr class="pixel-divider">
 
             <h2 class="section-heading"><span data-i18n="section_merch">Merch</span> <span class="new-tag" data-i18n="soon_tag">SOON</span></h2>
@@ -87,7 +146,6 @@
                 </p>
             </div>
 
-            
         </main>
         <!-- END CONTENT -->
 
@@ -117,6 +175,13 @@ loadComponent('footer-placeholder',  'components/footer.html', function() {
     // i18n runs AFTER all components are loaded
     initI18n();
 });
+loadComponent('sidebar-placeholder', 'components/sidebar.html', function() {
+    // Manually inject the FC2 counter script
+    var s = document.createElement('script');
+    s.src = '//counter1.fc2.com/counter.php?id=40753991&main=1';
+    s.type = 'text/javascript';
+    document.getElementById('fc2-counter').appendChild(s);
+});
 </script>
 
 <!-- Your i18n script (wrap it in a function called initI18n) -->
@@ -136,7 +201,7 @@ function initI18n() {
             nav_links:      "🔗 Links",
             nav_merch:      "👕 Merch",
             section_welcome: "Welcome",
-            welcome_msg:    "&#9760; Welcome to the official website of ZombieByte, I'm a Game Developer who loves crafting all kinds of experiences, especially retro looking games and horror! <br><br> The site is still under construction, but you can start exploring some of my games. <br><br> Thanks for stopping by! &#9760;",
+            welcome_msg:    "&#9760; Welcome to the official website of ZombieByte, I'm a Game Developer who loves crafting all kinds of experiences, especially retro looking games and horror! <br><br> The site is still under construction, but you can start exploring and playing some of my games. <br><br> Thanks for stopping by! &#9760;",
             section_devlog: "Latest Devlog",
             new_tag:        "NEW",
             read_more:      "READ MORE &raquo;",
@@ -169,6 +234,7 @@ function initI18n() {
             sidebar_now:    "🎵 Now Playing",
             sidebar_btn:    "🤝 My Button",
             sidebar_badge_text: "Free to use &amp; link!",
+            sidebar_say_hi: "👋 Say Hi!",
             loading: "&#9760; Loading...",
             footer1: "&#9760; ZombieByte &copy; 2026 &mdash; Made with &#10084; and <a href='https://godotengine.org' target='_blank'>Godot Engine</a> &#9760;",
             footer2: "Hosted on <a href='https://neocities.org' target='_blank'>NeoCities</a> &nbsp;&middot;&nbsp; Best viewed at 1024&times;768"
@@ -217,6 +283,7 @@ function initI18n() {
             sidebar_now:    "🎵 Reproduciendo",
             sidebar_btn:    "🤝 Mi Bot&oacute;n",
             sidebar_badge_text: "&iexcl;Libre de usar y enlazar!",
+            sidebar_say_hi: "👋 &iexcl;Saluda!",
             loading: "&#9760; Cargando...",
             footer1: "&#9760; ZombieByte &copy; 2026 &mdash; Hecho con &#10084; y <a href='https://godotengine.org' target='_blank'>Godot Engine</a> &#9760;",
             footer2: "Alojado en <a href='https://neocities.org' target='_blank'>NeoCities</a> &nbsp;&middot;&nbsp; Mejor a 1024&times;768"
@@ -289,7 +356,7 @@ function initI18n() {
                         '<span class="blog-post-date">' + (p.date_en || p.date || '') + '</span>' +
                     '</div>' +
                     '<div class="blog-post-body">' +
-                        '<img class="blog-post-img" src="' + (p.thumbnail || '/assets/images/default_thumbnail.jpg') + '" alt="' + t(p, 'title') + '" onerror="this.src=\'/assets/images/default_thumbnail.jpg\'">' +
+                        '<img class="blog-post-img" src="' + (p.thumbnail || '/assets/images/default_thumbnail.gif') + '" alt="' + t(p, 'title') + '" onerror="this.src=\'/assets/images/default_thumbnail.jpg\'">' +
                         '<div class="blog-post-text">' +
                             '<p>' + t(p, 'excerpt') + '</p>' +
                             '<a href="post.html?id=' + p.id + '" class="read-more" data-i18n="read_more">READ MORE &raquo;</a>' +
@@ -324,6 +391,8 @@ function initI18n() {
     };
 }());
 </script>
+
+
 
 </body>
 </html>
