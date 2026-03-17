@@ -1,4 +1,61 @@
 {
   "posts": [
+    {
+      "id": "working-on-the-website-20260308",
+      "date": "2026-03-08",
+      "date_en": "March 08, 2026",
+      "date_es": "8 de marzo de 2026",
+      "thumbnail": "/assets/images/post-website.jpg",
+      "title_en": "Working on the website",
+      "title_es": "Trabajando en el sitio web",
+      "excerpt_en": "Little update on my work on the website",
+      "excerpt_es": "Una actualizacion sobre mi trabajo en el sitio",
+      "content_en": [
+        "<h3 style='font-family:'Press Start 2P',monospace;color:#cc44ff;margin:16px 0 8px;font-size:11px;'>Working on the website [part 1]</h3>",
+        "This week I’ve been doing some work on the site.",
+        "First I tried to link a Notion Database to my website so I can directly write entries using Notion, but then making it post automatically in the website blog. ",
+        "I’m using github actions to do so. I connected Notion’s API and Neocities API together and I made a little script that will automatically fetch my new blog entries from Notion and post them into my site.",
+        "feels good man…."
+      ],
+      "content_es": [
+        "<h3 style='font-family:'Press Start 2P',monospace;color:#cc44ff;margin:16px 0 8px;font-size:11px;'>Trabajando en el sitio web [part 1]</h3>",
+        "Esta semana he estado trabajando un poco en el sitio.",
+        "Primero intenté vincular una base de datos de Notion a mi sitio web para poder escribir entradas directamente usando Notion, pero luego hacer que se publiquen automáticamente en el blog del sitio web.",
+        "Estoy usando github actions para hacerlo. Conecté la API de Notion y la API de Neocities juntas e hice un pequeño script que automáticamente obtendrá mis nuevas entradas de blog desde Notion y las publicará en mi sitio.",
+        "feels good man…"
+      ],
+      "tags": [
+        "webdev",
+        "Notion",
+        "neocities",
+        "python",
+        "github"
+      ]
+    },
+    {
+      "id": "first-devlog-20260306",
+      "date": "2026-03-06",
+      "date_en": "March 06, 2026",
+      "date_es": "6 de marzo de 2026",
+      "thumbnail": "/assets/images/first_thumbnail.jpg",
+      "title_en": "First Devlog",
+      "title_es": "Primer Devlog",
+      "excerpt_en": "Just a test",
+      "excerpt_es": "Solo una prueba",
+      "content_en": [
+        "<h3 style='font-family:'Press Start 2P',monospace;color:#cc44ff;margin:16px 0 8px;font-size:11px;'>Hello world!</h3>",
+        "Hello world this is the first of many devlogs on this site. Hope you enjoy reading about our journey through this crazy endevour of making games."
+      ],
+      "content_es": [
+        "<h3 style='font-family:'Press Start 2P',monospace;color:#cc44ff;margin:16px 0 8px;font-size:11px;'>Hola mundo!</h3>",
+        "Hola mundo, este es el primero de muchos devlogs en este sitio. Esperamos que disfrutes leyendo sobre nuestro viaje a través de esta loca aventura de hacer juegos."
+      ],
+      "tags": [
+        "godot",
+        "webdev",
+        "game dev",
+        "noctheria"
+      ]
+    }
   ]
 }

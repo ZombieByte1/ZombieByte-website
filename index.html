@@ -4,7 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ZombieByte | Home</title>
-    <link rel="icon" href="placeholder_zombiebyte_favicon_skull.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
     <style>
         /* === ALL YOUR CSS STAYS HERE (shared) === */
         /* Or move to a shared style.css and use <link rel="stylesheet" href="style.css"> */
@@ -47,7 +50,7 @@
                 <div class="game-card-full">
                     <img class="game-cover"
                          src="/assets/images/noctheria_promo.gif"
-                         alt="Guinda"
+                         alt="Noctheria"
                          onerror="this.src='/assets/images/default_thumbnail.jpg'">
                     <div class="game-info">
                         <p class="game-title">Noctheria</p>
@@ -146,6 +149,8 @@
                 </p>
             </div>
 
+          
+           
         </main>
         <!-- END CONTENT -->
 
@@ -191,15 +196,15 @@ function initI18n() {
     // Just wrap the self-executing function body inside initI18n()
      var T = {
         en: {
-            subtitle:       "&#9733; Retro Horror Games from the Crypt &#9733;",
-            marquee:        "&#9760; NEW GAME IN DEVELOPMENT &mdash; STAY TUNED &#9760; &nbsp;&nbsp;&nbsp; 🎮 INSPIRED BY N64 &middot; PS1 &middot; PS2 &middot; GAMECUBE &middot; GAME BOY 🎮 &nbsp;&nbsp;&nbsp; &#9760; CHECK OUT THE LATEST DEVLOG BELOW &#9760; &nbsp;&nbsp;&nbsp; 💀 JOIN THE DISCORD &mdash; LINK IN SIDEBAR 💀 &nbsp;&nbsp;&nbsp; 🕹 MADE WITH GODOT ENGINE 🕹 &nbsp;&nbsp;&nbsp;",
+            subtitle:       "&#9733; We make games in the basement &#9733;",
+            marquee:        "&#9760; WEBSITE IS IN DEVELOPMENT &mdash; STAY TUNED &#9760; &nbsp;&nbsp;&nbsp; 🎮 NEW GAME IN DEVELOPMENT: NOCTHERIA &nbsp;&nbsp;&nbsp; 💀 CHECK OUT THE LATEST DEVLOG BELOW 💀",
             nav_home:       "🏠 Home",
             nav_devlog:     "📝 Devlog",
             nav_games:      "🎮 Games",
             nav_videos:     "📺 Videos",
             nav_about:      "💀 About",
-            nav_links:      "🔗 Links",
-            nav_merch:      "👕 Merch",
+            nav_links:      "🔗 Links (WIP)",
+            nav_merch:      "👕 Merch (WIP)",
             section_welcome: "Welcome",
             welcome_msg:    "&#9760; Welcome to the official website of ZombieByte, I'm a Game Developer who loves crafting all kinds of experiences, especially retro looking games and horror! <br><br> The site is still under construction, but you can start exploring and playing some of my games. <br><br> Thanks for stopping by! &#9760;",
             section_devlog: "Latest Devlog",
@@ -221,8 +226,9 @@ function initI18n() {
             mood_label:     "Mood:",
             mood_val:       "☕ Caffeinated",
             progress_label: "Progress:",
-            progress_val:   "Boss Fight AI",
+            progress_val:   "33%",
             sidebar_find:   "🔗 Find Me",
+            sidebar_random_game:   "Play a random Game",
             sidebar_pages:  "📂 Pages",
             page_devlog:    "Devlog",
             page_games:     "All Games",
@@ -233,24 +239,25 @@ function initI18n() {
             sidebar_souls:  "💀 Souls Devoured",
             sidebar_now:    "🎵 Now Playing",
             sidebar_btn:    "🤝 My Button",
+            sidebar_webrings: " Webrings ",
             sidebar_badge_text: "Free to use &amp; link!",
             sidebar_say_hi: "👋 Say Hi!",
             loading: "&#9760; Loading...",
-            footer1: "&#9760; ZombieByte &copy; 2026 &mdash; Made with &#10084; and <a href='https://godotengine.org' target='_blank'>Godot Engine</a> &#9760;",
+            footer1: "&#9760; ZombieByte &copy; 2026 &mdash; Made with &#10084; and HTML/CSS/JS &#9760;",
             footer2: "Hosted on <a href='https://neocities.org' target='_blank'>NeoCities</a> &nbsp;&middot;&nbsp; Best viewed at 1024&times;768"
         },
         es: {
-            subtitle:       "&#9733; Juegos de Terror Retro desde la Cripta &#9733;",
-            marquee:        "&#9760; NUEVO JUEGO EN DESARROLLO &mdash; MANTENTE AL TANTO &#9760; &nbsp;&nbsp;&nbsp; 🎮 INSPIRADO EN N64 &middot; PS1 &middot; PS2 &middot; GAMECUBE &middot; GAME BOY 🎮 &nbsp;&nbsp;&nbsp; &#9760; VE EL &Uacute;LTIMO DEVLOG ABAJO &#9760; &nbsp;&nbsp;&nbsp; 💀 &Uacute;NETE AL DISCORD &mdash; LINK EN EL SIDEBAR 💀 &nbsp;&nbsp;&nbsp; 🕹 HECHO CON GODOT ENGINE 🕹 &nbsp;&nbsp;&nbsp;",
+            subtitle:       "&#9733; Hacemos juegos en el sotano &#9733;",
+            marquee:        "&#9760; SITIO EN DESARROLLO &mdash; MANTENTE AL TANTO &#9760; &nbsp;&nbsp;&nbsp; 🎮 NUEVO JUEGO EN DESARROLLO: NOCTHERIA &nbsp;&nbsp;&nbsp; 💀 VE EL &Uacute;LTIMO DEVLOG ABAJO 💀",
             nav_home:       "🏠 Inicio",
             nav_devlog:     "📝 Devlog",
             nav_games:      "🎮 Juegos",
             nav_videos:     "📺 Videos",
             nav_about:      "💀 Acerca",
-            nav_links:      "🔗 Links",
-            nav_merch:      "👕 Merch",
+            nav_links:      "🔗 Links (WIP)",
+            nav_merch:      "👕 Merch (WIP)",
             section_welcome: "Bienvenido",
-            welcome_msg:    "&#9760; Bienvenido al sitio web oficial de ZombieByte, soy un desarrollador de juegos que ama crear todos los tipos de experiencias, especialmente juegos con aspecto retro y terror! <br><br> El sitio aún está en construcción, pero puedes comenzar a explorar algunos de mis juegos. <br><br> ¡Gracias por visitarnos! &#9760;",
+            welcome_msg:    "&#9760; Bienvenido al sitio web oficial de ZombieByte, soy un desarrollador de videojuegos que ama crear todos tipo de experiencias, pero especialmente juegos con aspecto retro y terror! <br><br> El sitio aún está en construcción, pero puedes comenzar a explorar algunos de mis juegos. <br><br> ¡Gracias por visitarnos! &#9760;",
             section_devlog: "&Uacute;ltimo Devlog",
             new_tag:        "NUEVO",
             read_more:      "LEER M&Aacute;S &raquo;",
@@ -272,6 +279,7 @@ function initI18n() {
             progress_label: "Progreso:",
             progress_val:   "IA del Jefe Final",
             sidebar_find:   "🔗 Encu&eacute;ntrame",
+            sidebar_random_game:   "Juega un Juego al Azar",
             sidebar_pages:  "📂 P&aacute;ginas",
             page_devlog:    "Devlog",
             page_games:     "Todos los Juegos",
@@ -282,10 +290,11 @@ function initI18n() {
             sidebar_souls:  "💀 Almas Devoradas",
             sidebar_now:    "🎵 Reproduciendo",
             sidebar_btn:    "🤝 Mi Bot&oacute;n",
+            sidebar_webrings: " Webrings ",
             sidebar_badge_text: "&iexcl;Libre de usar y enlazar!",
             sidebar_say_hi: "👋 &iexcl;Saluda!",
             loading: "&#9760; Cargando...",
-            footer1: "&#9760; ZombieByte &copy; 2026 &mdash; Hecho con &#10084; y <a href='https://godotengine.org' target='_blank'>Godot Engine</a> &#9760;",
+            footer1: "&#9760; ZombieByte &copy; 2026 &mdash; Hecho con &#10084; y HTML/CSS/JS &#9760;",
             footer2: "Alojado en <a href='https://neocities.org' target='_blank'>NeoCities</a> &nbsp;&middot;&nbsp; Mejor a 1024&times;768"
         }
     };
@@ -356,7 +365,7 @@ function initI18n() {
                         '<span class="blog-post-date">' + (p.date_en || p.date || '') + '</span>' +
                     '</div>' +
                     '<div class="blog-post-body">' +
-                        '<img class="blog-post-img" src="' + (p.thumbnail || '/assets/images/default_thumbnail.gif') + '" alt="' + t(p, 'title') + '" onerror="this.src=\'/assets/images/default_thumbnail.jpg\'">' +
+                        '<img class="blog-post-img" src="' + (p.thumbnail || '/assets/images/default_thumbnail.gif') + '" alt="' + t(p, 'title') + '" onerror="this.src=\'/assets/images/default_thumbnail.gif\'">' +
                         '<div class="blog-post-text">' +
                             '<p>' + t(p, 'excerpt') + '</p>' +
                             '<a href="post.html?id=' + p.id + '" class="read-more" data-i18n="read_more">READ MORE &raquo;</a>' +
@@ -392,7 +401,21 @@ function initI18n() {
 }());
 </script>
 
+<script>
+function goToRandomPage() {
+    const pages = ['game-die-roulette.html', 'game-rogue-yankii.html', 'game-space-hopper.html', 'game-future-funk-soccer-racing.html', 'game-come-to-play.html'];
+    const randomPage = pages[Math.floor(Math.random() * pages.length)];
+    window.location.href = randomPage;
+}
+</script>
 
+<script>
+function goToRandomPage() {
+    const pages = ['game-die-roulette.html', 'game-rogue-yankii.html', 'game-space-hopper.html', 'game-future-funk-soccer-racing.html', 'game-come-to-play.html'];
+    const randomPage = pages[Math.floor(Math.random() * pages.length)];
+    window.location.href = randomPage;
+}
+</script>
 
 </body>
 </html>

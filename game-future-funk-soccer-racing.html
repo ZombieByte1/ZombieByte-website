@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZombieByte | Die Roulette</title>
+    <title>ZombieByte | future funk soccer racing</title>
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -41,27 +41,13 @@
         /* The game iframe — positioned over the screen area of the console image.
            Tweak top/left/width/height percentages to align with YOUR console image's screen. */
         #game-iframe-wrapper {
-            position: absolute;
-            z-index: 2;
-
-            /* ── TUNE THESE to fit your console image's screen area ──
-               These defaults assume a Game Boy Color style image where
-               the screen is roughly centered, starts ~28% from top,
-               is ~44% wide and ~32% tall.
-               Adjust until the iframe sits perfectly inside the screen. */
-            top:    9%;
-            left:   23%;
-            width:  56%;
-            height: 32%;
-        }
-
-        #game-iframe-wrapper iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-            display: block;
-            background: #000;
-        }
+    position: absolute;
+    z-index: 2;
+    top: 140px;
+    left: 34%;
+    width: auto;
+    height: 476px;
+}
 
         /* Fallback: if no console image is used, show a plain bordered box */
         #console-frame.no-console #console-bg {
@@ -323,20 +309,20 @@
             <!-- ══ GAME INFO HEADER ══ -->
             <div id="game-header">
                 <div id="game-header-text">
-                    <h1 id="game-page-title">Die Roulette</h1>
+                    <h1 id="game-page-title">Future Funk Soccer Racing</h1>
                     <p id="game-page-desc" data-i18n="guinda_desc">
-                    Die Roulette is a different take on Russian roulette. The rules are simple: You throw a die, you get a $100 times your roll. But you'll have to pull the trigger of the gun the same amount of times. 
+                        Begin your adventure through Space and Time, jumping from Planet to Planet and uncover the Darkest Secrert in the Universe.
                     </p>
                     <div id="game-meta">
                         <span class="game-status-badge in-dev" data-i18n="status_released">RELEASED</span>
-                        <span class="game-meta-tag">GBStudio</span>
-                        <span class="game-meta-tag">Experimental</span>
-                        <span class="game-meta-tag">Gameboy Style</span>
+                        <span class="game-meta-tag">Godot</span>
+                        <span class="game-meta-tag">Platformer</span>
+                        <span class="game-meta-tag">2D Game</span>
                         <span class="game-meta-tag">Browser</span>
                     </div>
                 </div>
                 <div id="game-platform-btns">
-                    <a href="https://zombiebyte.itch.io/die-roulette" target="_blank" class="game-btn itch"> DOWNLOAD ON ITCH.IO</a>
+                    <a href="https://zombiebyte.itch.io/space-hopper" target="_blank" class="game-btn itch"> DOWNLOAD ON ITCH.IO</a>
                     <!-- Uncomment as needed:
                     <a href="#" target="_blank" class="game-btn steam">🖥 STEAM</a>
                     <a href="#" target="_blank" class="game-btn android">📱 ANDROID</a>
@@ -349,14 +335,14 @@
 
                 <div class="controls-grid">
                     <div class="control-item">
-                        <span class="control-key" data-i18n="arrow_keys">ARROW KEYS</span>
+                        <span class="control-key" data-i18n="arrow_keys">A-D</span>
                         <span class="control-desc" data-i18n="ctrl_move">Move character</span>
                     </div>
-                    <div class="control-item">
-                        <span class="control-key">Z</span>
-                        <span class="control-desc" data-i18n="ctrl_look">Sword / Talk</span>
-                    </div>
-                    <div class="control-item">
+                    <!-- <div class="control-item">
+                        <span class="control-key">Space</span>
+                        <span class="control-desc" data-i18n="ctrl_look">Sword </span>
+                    </div> -->
+                    <!-- <div class="control-item">
                         <span class="control-key">X</span>
                         <span class="control-desc" data-i18n="ctrl_attack">Shoot weapon</span>
                     </div>
@@ -364,7 +350,7 @@
                         <span class="control-key">Enter</span>
                         <span class="control-desc" data-i18n="ctrl_interact">Pause / Start</span>
                     </div>
-                   
+                    -->
                 </div>
 
                 <!-- Add any extra notes or tips here -->
@@ -401,16 +387,16 @@
 
                     <!-- CONSOLE IMAGE — set src to your console PNG, or remove if not using one -->
                     <img id="console-bg"
-                         src="/assets/images/Game_Boy_Color_(green).png"
+                         src="/assets/images/nokia-phone.png"
                          alt="Game Boy Color"
-                         onerror="this.style.display='none'; document.getElementById('game-iframe-wrapper').style.cssText='position:relative;top:auto;left:auto;width:100%;height:480px;max-width:700px;margin:0 auto;border:3px solid #8a2be2;'">
+                         onerror="this.style.display='none'; document.getElementById('game-iframe-wrapper').style.cssText='position:relative;top:auto;left:auto;width:100%;height:auto;max-width:576px;margin:0 auto;border:3px solid #8a2be2;'">
 
                     <!-- GAME IFRAME — paste your itch.io embed src here -->
                     <div id="game-iframe-wrapper">
-                        <iframe
-                            src="https://itch.io/embed-upload/15022666?color=000000"
+                        <iframe style="height: stretch;"
+                            src="https://itch.io/embed-upload/2350748?color=e0e0e"
                             allowfullscreen
-                            title="Die Roulette">
+                            title="Future Funk Soccer Racing">
                         </iframe>
                     </div>
 
@@ -488,14 +474,14 @@ function initI18n() {
             sidebar_badge_text: "Free to use &amp; link!",
             loading:        "&#9760; Loading...",
             back_to_games:  "Back to Games",
-            guinda_desc:    "Die Roulette is a different take on Russian roulette. The rules are simple: You throw a die, you get a $100 times your roll. But you'll have to pull the trigger of the gun the same amount of times.",
+            guinda_desc:    "Destroy the traffic jams with balls! Use your Soccer ball to destroy cars!",
             status_indev:   "IN DEV",
             status_released:"RELEASED",
             fullscreen:     "FULLSCREEN",
             how_to_play:    "HOW TO PLAY",
-            arrow_keys:     "ARROW KEYS",
-            ctrl_move:      "Move character",
-            ctrl_look:      "Talk",
+            arrow_keys:     "ARROW KEYS OR A-D",
+            ctrl_move:      "Move",
+            ctrl_look:      "Jetpack",
             ctrl_attack:    "Back",
             ctrl_jump:      "Jump",
             ctrl_interact:  "Pause / Start",
@@ -536,14 +522,14 @@ function initI18n() {
             sidebar_badge_text: "&iexcl;Libre de usar y enlazar!",
             loading:        "&#9760; Cargando...",
             back_to_games:  "Volver a Juegos",
-            guinda_desc:    "Die Roulette es un enfoque diferente a la ruleta rusa. Las reglas son simples: Tiras un dado, obtienes $100 veces tu tirada. Pero tendrás que apretar el gatillo del arma la misma cantidad de veces.",
+            guinda_desc:    "Destruye el traffico con pelotas! Usa tu balon de futbol para destruir los carros!",
             status_indev:   "EN DESARROLLO",
             status_released:"LANZADO",
             fullscreen:     "PANTALLA COMPLETA",
             how_to_play:    "C&Oacute;MO JUGAR",
-            arrow_keys:     "FLECHAS",
-            ctrl_move:      "Mover personaje",
-            ctrl_look:      "Hablar",
+            arrow_keys:     "FLECHAS o A-D",
+            ctrl_move:      "Mover",
+            ctrl_look:      "Jetpack",
             ctrl_attack:    "Regresar",
             ctrl_jump:      "Saltar",
             ctrl_interact:  "Pausa / Men&uacute;",

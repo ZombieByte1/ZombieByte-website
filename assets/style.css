@@ -122,15 +122,15 @@
 
         /* ===== CONTENT ===== */
         #content { flex:1; padding:16px; min-width:0; }
-        .section-heading { font-family:'Press Start 2P',monospace; font-size:10px; color:#cc44ff; text-shadow:0 0 8px #9932cc; border-bottom:2px solid #8a2be2; padding-bottom:7px; margin-bottom:14px; text-transform:uppercase; letter-spacing:2px; }
+        .section-heading { font-family:'Press Start 2P',monospace; font-size:18px; color:#e0d0ff; text-shadow:0 0 8px #9932cc; border-bottom:2px solid #8a2be2; padding-bottom:7px; margin-bottom:14px; text-transform:uppercase; letter-spacing:2px; }
         .section-heading::before { content:'☠ '; }
-        .new-tag { background:#ff3333; color:#fff; font-family:'Press Start 2P',monospace; font-size:6px; padding:2px 5px; margin-left:8px; vertical-align:middle; animation:blink 1s step-end infinite; }
+        .new-tag { background:#ff3333; color:#e1e1e1; font-family:'Press Start 2P',monospace; font-size:18px; padding:2px 5px; margin-left:8px; vertical-align:middle; animation:blink 1s step-end infinite; }
         @keyframes blink { 0%,100%{opacity:1;} 50%{opacity:0;} }
 
         .blog-post { border:2px solid #3d006a; background:#0c0020; margin-bottom:16px; }
         .blog-post-header { background:linear-gradient(90deg,#220044,#160035); padding:7px 12px; border-bottom:1px solid #3d006a; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:4px; }
-        .blog-post-title { font-family:'Press Start 2P',monospace; font-size:8px; color:#cc44ff; }
-        .blog-post-date  { font-family:'VT323',monospace; font-size:17px; color:#777; }
+        .blog-post-title { font-family:'Press Start 2P',monospace; font-size:14px; color:#fff; }
+        .blog-post-date  { font-family:'VT323',monospace; font-size:17px; color:#e1e1e1; }
         .blog-post-body  { padding:12px; display:flex; gap:14px; align-items:flex-start; }
         .blog-post-img   { width:150px; min-width:150px; height:105px; object-fit:cover; border:2px solid #8a2be2; image-rendering:pixelated; }
         .blog-post-text  { font-family:'VT323',monospace; font-size:20px; color:#d0b0ff; line-height:1.5; }
@@ -353,8 +353,8 @@
 
         .game-card-full .game-title {
             font-family: 'Press Start 2P', monospace;
-            font-size: 7px;
-            color: #cc44ff;
+            font-size: 14px;
+            color: #E0D100;
             line-height: 1.8;
             margin: 0;
         }
